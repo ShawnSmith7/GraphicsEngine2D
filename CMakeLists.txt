@@ -14,10 +14,8 @@ FetchContent_Declare(glfw
 )
 FetchContent_MakeAvailable(glfw)
 
-#add_library(GraphicsEngine2DLib)
-#target_include_directories(GraphicsEngine2DLib PUBLIC src)
-#target_link_libraries(GraphicsEngine2DLib PUBLIC opengl32 glad)
+add_library(GraphicsEngine2DLib src/Window.cpp)
+target_link_libraries(GraphicsEngine2DLib PUBLIC opengl32 glad glfw)
 
 add_executable(GraphicsEngine2DApp src/main.cpp)
-target_link_libraries(GraphicsEngine2DApp PRIVATE opengl32 glad glfw)
-#target_link_libraries(GraphicsEngine2DApp PRIVATE GraphicsEngine2DLib)
+target_link_libraries(GraphicsEngine2DApp PRIVATE GraphicsEngine2DLib)
