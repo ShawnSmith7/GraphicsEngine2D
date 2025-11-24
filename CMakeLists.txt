@@ -19,3 +19,7 @@ target_link_libraries(GraphicsEngine2DLib PUBLIC opengl32 glad glfw)
 
 add_executable(GraphicsEngine2DApp src/main.cpp)
 target_link_libraries(GraphicsEngine2DApp PRIVATE GraphicsEngine2DLib)
+
+target_compile_definitions(GraphicsEngine2DApp PRIVATE
+    SRC_DIR="${CMAKE_SOURCE_DIR}/src/"
+)
