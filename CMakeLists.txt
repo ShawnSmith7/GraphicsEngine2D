@@ -26,6 +26,7 @@ add_library(GraphicsEngine2DLib
     src/Buffer.cpp
     src/VertexBuffer.cpp
     src/IndexBuffer.cpp
+    src/Rect.cpp
 )
 target_link_libraries(GraphicsEngine2DLib PUBLIC opengl32 glad glfw glm)
 

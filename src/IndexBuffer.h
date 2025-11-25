@@ -9,8 +9,13 @@ class IndexBuffer : public Buffer {
         void bind() const;
         static void unbind();
 
+        size_t getCount() const;
+
         template<typename T, size_t N>
-        static void setData(const T (&data)[N], GLenum usage) {
+        void setData(const T (&data)[N], GLenum usage) {
+            count = N;
             Buffer::setData(GL_ELEMENT_ARRAY_BUFFER, data, usage);
         }
+    private:
+        size_t count;
 };
