@@ -1,13 +1,5 @@
 #include "Window.h"
-
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <sstream>
-
-#ifndef SRC_DIR
-#define SRC_DIR "./"
-#endif
+#include "ShaderProgram.h"
 
 void processInput(GLFWwindow* window);
 
@@ -43,63 +35,8 @@ int main() {
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
 
-    const char* vertexShaderFilePath = SRC_DIR "vertex.shader";
-    std::ifstream vertexShaderFile(vertexShaderFilePath);
-    if (!vertexShaderFile.is_open())
-        std::cerr <<"Failed to open " << vertexShaderFilePath << '\n';
-    
-    std::ostringstream vertexShaderBuffer;
-    vertexShaderBuffer << vertexShaderFile.rdbuf();
-    std::string vertexShaderString = vertexShaderBuffer.str();
-    const char* vertexShaderCString = vertexShaderString.c_str();
-
-    unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &vertexShaderCString, 0);
-    glCompileShader(vertexShader);
-
-    int  success;
-    char infoLog[512];
-    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-    if(!success) {
-        glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-        std::cerr << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << '\n';
-    }
-
-    const char* fragmentShaderFilePath = SRC_DIR "fragment.shader";
-    std::ifstream fragmentShaderFile(fragmentShaderFilePath);
-    if (!fragmentShaderFile.is_open())
-        std::cerr << "Failed to open " << fragmentShaderFilePath;
-
-    std::ostringstream fragmentShaderBuffer;
-    fragmentShaderBuffer << fragmentShaderFile.rdbuf();
-    std::string fragmentShaderString = fragmentShaderBuffer.str();
-    const char* fragmentShaderCString = fragmentShaderString.c_str();
-
-    unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderCString, 0);
-    glCompileShader(fragmentShader);
-
-    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-    if(!success) {
-        glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-        std::cerr << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << '\n';
-    }
-
-    unsigned int shaderProgram = glCreateProgram();
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
-    glLinkProgram(shaderProgram);
-
-    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-    if(!success) {
-        glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-        std::cerr << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << '\n';
-    }
-
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
-
-    glUseProgram(shaderProgram);
+    ShaderProgram shaderProgram("vertex.shader", "fragment.shader");
+    shaderProgram.use();
 
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     
