@@ -1,5 +1,6 @@
 #include "Window.h"
 #include "ShaderProgram.h"
+#include "VertexArray.h"
 
 // #include <glm/glm.hpp>
 // #include <glm/gtc/matrix_transform.hpp>
@@ -10,9 +11,8 @@ void processInput(GLFWwindow* window);
 int main() {
     Window window(1280, 800, "GraphicsEngine2D");
 
-    unsigned int vao;
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
+    VertexArray vertexArray;
+    vertexArray.bind();
 
     float vertices[] = {
         100.0f, 100.0f,
@@ -36,8 +36,8 @@ int main() {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
+    vertexArray.enableAttribute(0);
+    vertexArray.setAttributePointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), 0);
 
     glm::vec4 coolColor(1.0f, 0.5f, 0.2f, 1.0f);
 
