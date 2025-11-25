@@ -1,6 +1,8 @@
 #include "Window.h"
 #include "ShaderProgram.h"
 #include "VertexArray.h"
+#include "VertexBuffer.h"
+#include "IndexBuffer.h"
 
 // #include <glm/glm.hpp>
 // #include <glm/gtc/matrix_transform.hpp>
@@ -21,20 +23,18 @@ int main() {
         200.0f, 100.0f
     };
 
-    unsigned int vbo;
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    VertexBuffer vertexBuffer;
+    vertexBuffer.bind();
+    vertexBuffer.setData(vertices, GL_STATIC_DRAW);
 
     unsigned int indices[] = {
         0, 1, 2,
         2, 3, 0
     };
 
-    unsigned int ebo;
-    glGenBuffers(1, &ebo);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    IndexBuffer indexBuffer;
+    indexBuffer.bind();
+    indexBuffer.setData(indices, GL_STATIC_DRAW);
 
     vertexArray.enableAttribute(0);
     vertexArray.setAttributePointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), 0);

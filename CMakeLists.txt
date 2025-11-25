@@ -19,7 +19,14 @@ FetchContent_Declare(glm
 )
 FetchContent_MakeAvailable(glfw glm)
 
-add_library(GraphicsEngine2DLib src/Window.cpp src/ShaderProgram.cpp src/VertexArray.cpp)
+add_library(GraphicsEngine2DLib
+    src/Window.cpp
+    src/ShaderProgram.cpp
+    src/VertexArray.cpp
+    src/Buffer.cpp
+    src/VertexBuffer.cpp
+    src/IndexBuffer.cpp
+)
 target_link_libraries(GraphicsEngine2DLib PUBLIC opengl32 glad glfw glm)
 
 add_executable(GraphicsEngine2DApp src/main.cpp)
