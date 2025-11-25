@@ -31,6 +31,14 @@ GLFWwindow* Window::get() const {
     return window;
 }
 
+int Window::getWidth() const {
+    return width;
+}
+
+int Window::getHeight() const {
+    return height;
+}
+
 void Window::render(const std::function<void()>& renderCallback) const {
     while(!glfwWindowShouldClose(window)) {
         renderCallback();

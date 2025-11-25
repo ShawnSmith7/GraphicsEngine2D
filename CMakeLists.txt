@@ -12,10 +12,15 @@ FetchContent_Declare(glfw
     GIT_REPOSITORY https://github.com/glfw/glfw.git
     GIT_TAG 3.4
 )
-FetchContent_MakeAvailable(glfw)
+
+FetchContent_Declare(glm
+    GIT_REPOSITORY https://github.com/g-truc/glm.git
+    GIT_TAG 1.0.2
+)
+FetchContent_MakeAvailable(glfw glm)
 
 add_library(GraphicsEngine2DLib src/Window.cpp src/ShaderProgram.cpp)
-target_link_libraries(GraphicsEngine2DLib PUBLIC opengl32 glad glfw)
+target_link_libraries(GraphicsEngine2DLib PUBLIC opengl32 glad glfw glm)
 
 add_executable(GraphicsEngine2DApp src/main.cpp)
 target_link_libraries(GraphicsEngine2DApp PRIVATE GraphicsEngine2DLib)

@@ -1,6 +1,10 @@
 #include "Window.h"
 #include "ShaderProgram.h"
 
+// #include <glm/glm.hpp>
+// #include <glm/gtc/matrix_transform.hpp>
+// #include <glm/gtc/type_ptr.hpp>
+
 void processInput(GLFWwindow* window);
 
 int main() {
@@ -11,10 +15,10 @@ int main() {
     glBindVertexArray(vao);
 
     float vertices[] = {
-        -0.5f, 0.5f,
-        -0.5f, -0.5f,
-        0.5f, -0.5f,
-        0.5f, 0.5f
+        100.0f, 100.0f,
+        100.0f, 200.0f,
+        200.0f, 200.0f,
+        200.0f, 100.0f
     };
 
     unsigned int vbo;
@@ -35,6 +39,8 @@ int main() {
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
 
+    glm::vec4 coolColor(1.0f, 0.5f, 0.2f, 1.0f);
+
     ShaderProgram shaderProgram("vertex.shader", "fragment.shader");
     shaderProgram.use();
 
@@ -46,6 +52,13 @@ int main() {
         processInput(window.get());
 
         glClear(GL_COLOR_BUFFER_BIT);
+
+        shaderProgram.setVec4("color", coolColor);
+        glm::mat4 projection = glm::ortho(0.0f, (float)window.getWidth(), (float)window.getHeight(), 0.0f, -1.0f, 1.0f);
+        glm::mat4 view(1.0f);
+        glm::mat4 model(1.0f);
+        glm::mat4 transform = projection * view * model;
+        shaderProgram.setMat4("transform", transform);
 
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     });

@@ -12,6 +12,8 @@ class Window {
         ~Window();
 
         GLFWwindow* get() const;
+        int getWidth() const;
+        int getHeight() const;
 
         void render(const std::function<void()>& renderCallback) const;
     private:

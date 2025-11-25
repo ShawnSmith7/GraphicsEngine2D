@@ -29,6 +29,14 @@ void ShaderProgram::use() const {
     glUseProgram(ID);
 }
 
+void ShaderProgram::setVec4(const char* name, const glm::vec4& value) const {
+    glUniform4fv(glGetUniformLocation(ID, name), 1, glm::value_ptr(value));
+}
+
+void ShaderProgram::setMat4(const char* name, const glm::mat4& value) const {
+    glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, glm::value_ptr(value));
+}
+
 std::string ShaderProgram::fileNameToString(const std::string& fileName) {
     std::string filePath = SRC_DIR + fileName;
     std::ifstream file(filePath);
