@@ -13,8 +13,6 @@ class Drawable {
     protected:
         VertexArray vertexArray;
         VertexBuffer vertexBuffer;
-        IndexBuffer indexBuffer;
-
         std::span<float> vertexPointers;
-        std::span<unsigned int> indexPointers;
+        IndexBuffer indexBuffer;
 };

@@ -1,43 +1,19 @@
 #include "Window.h"
 #include "Rect.h"
+#include "Circle.h"
 
 void processInput(GLFWwindow* window);
 
 int main() {
     Window window(1280, 800, "GraphicsEngine2D");
 
-    VertexArray vertexArray;
-    vertexArray.bind();
-
-    float vertices[] = {
-        100.0f, 100.0f,
-        100.0f, 200.0f,
-        200.0f, 200.0f,
-        200.0f, 100.0f
-    };
-
-    VertexBuffer vertexBuffer;
-    vertexBuffer.bind();
-    vertexBuffer.setData(vertices, GL_STATIC_DRAW);
-
-    unsigned int indices[] = {
-        0, 1, 2,
-        2, 3, 0
-    };
-
-    IndexBuffer indexBuffer;
-    indexBuffer.bind();
-    indexBuffer.setData(indices, GL_STATIC_DRAW);
-
-    vertexArray.enableAttribute(0);
-    vertexArray.setAttributePointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), 0);
-
-    glm::vec4 coolColor(1.0f, 0.5f, 0.2f, 1.0f);
-
     ShaderProgram shaderProgram("vertex.shader", "fragment.shader");
     shaderProgram.use();
 
+    glm::vec4 coolColor(1.0f, 0.5f, 0.2f, 1.0f);
+
     Rect rect(glm::vec2(200.0f), glm::vec2(200.0f), coolColor);
+    Circle circle(glm::vec2(640.0f, 300.0f), 100.0f, coolColor);
 
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     
@@ -54,6 +30,7 @@ int main() {
         glm::mat4 transform = projection * view * model;
         shaderProgram.setMat4("transform", transform);
         rect.draw(shaderProgram);
+        circle.draw(shaderProgram);
 
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     });

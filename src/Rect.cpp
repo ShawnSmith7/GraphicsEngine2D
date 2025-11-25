@@ -13,6 +13,8 @@ Rect::Rect(const glm::vec2& pos, const glm::vec2& size, const glm::vec4& color) 
     vertices[6] = pos.x + size.y;
     vertices[7] = pos.y;
 
+    vertexPointers = vertices;
+
     vertexBuffer.bind();
     vertexBuffer.setData(vertices, GL_STATIC_DRAW);
 
@@ -22,13 +24,13 @@ Rect::Rect(const glm::vec2& pos, const glm::vec2& size, const glm::vec4& color) 
     vertexArray.enableAttribute(0);
     vertexArray.setAttributePointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), 0);
 
-    vertexPointers = vertices;
-    indexPointers = indices;
+    vertexArray.unbind();
 }
 
 void Rect::draw(const ShaderProgram& shaderProgram) const {
+    vertexArray.bind();
     shaderProgram.setVec4("color", color);
     glDrawElements(GL_TRIANGLES, indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
 }
 
-unsigned int Rect::indices[] = { 0, 1, 2, 2, 3, 0 };
+const unsigned int Rect::indices[] = { 0, 1, 2, 2, 3, 0 };
