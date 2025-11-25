@@ -15,6 +15,6 @@ class Drawable {
         VertexBuffer vertexBuffer;
         IndexBuffer indexBuffer;
 
-        std::span<float> vertices;
-        std::span<unsigned int> indices;
+        std::span<float> vertexPointers;
+        std::span<unsigned int> indexPointers;
 };

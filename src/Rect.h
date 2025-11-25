@@ -12,4 +12,7 @@ class Rect : public Drawable {
     private:
         glm::vec2 pos, size;
         glm::vec4 color;
+
+        float vertices[8];
+        static unsigned int indices[6];
 };
