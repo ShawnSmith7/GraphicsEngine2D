@@ -1,7 +1,7 @@
 #include "Window.h"
 #include "Rect.h"
 #include "Circle.h"
-#include "Line.h"
+#include "Line.cpp"
 
 void processInput(GLFWwindow* window);
 

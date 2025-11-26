@@ -4,7 +4,7 @@
 
 #include <numbers>
 
-class Circle : public DynamicDrawable {
+class Circle : public Drawable {
     public:
         Circle(const glm::vec2& pos = glm::vec2(0.0f),
             float radius = 1.0f,
