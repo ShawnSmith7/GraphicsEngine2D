@@ -10,8 +10,19 @@ class Drawable {
     public:
         virtual void draw(const ShaderProgram& shaderProgram) = 0;
     protected:
+        Transform transform;
+};
+
+class StaticDrawable : public Drawable {
+    protected:
+        static VertexArray vertexArray;
+        static VertexBuffer vertexBuffer;
+        static IndexBuffer indexBuffer;
+};
+
+class DynamicDrawable : public Drawable {
+    protected:
         VertexArray vertexArray;
         VertexBuffer vertexBuffer;
         IndexBuffer indexBuffer;
-        Transform transform;
 };

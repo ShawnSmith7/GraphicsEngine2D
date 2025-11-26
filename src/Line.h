@@ -2,7 +2,7 @@
 
 #include "Drawable.h"
 
-class Line : public Drawable {
+class Line : public DynamicDrawable {
     public:
         enum class Type { Default, Rect, Round };
 
