@@ -4,6 +4,8 @@ Rect::Rect(const glm::vec2& pos, const glm::vec2& size, const glm::vec4& color) 
     pos(pos), size(size), color(color) {
     vertexArray.bind();
 
+    vertexPointers = vertices;
+
     vertices[0] = pos.x;
     vertices[1] = pos.y;
     vertices[2] = pos.x;
@@ -12,8 +14,6 @@ Rect::Rect(const glm::vec2& pos, const glm::vec2& size, const glm::vec4& color) 
     vertices[5] = pos.y + size.y;
     vertices[6] = pos.x + size.y;
     vertices[7] = pos.y;
-
-    vertexPointers = vertices;
 
     vertexBuffer.bind();
     vertexBuffer.setData(vertices, GL_STATIC_DRAW);

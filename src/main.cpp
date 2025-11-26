@@ -1,6 +1,7 @@
 #include "Window.h"
 #include "Rect.h"
 #include "Circle.h"
+#include "Line.cpp"
 
 void processInput(GLFWwindow* window);
 
@@ -14,6 +15,9 @@ int main() {
 
     Rect rect(glm::vec2(200.0f), glm::vec2(200.0f), coolColor);
     Circle circle(glm::vec2(640.0f, 300.0f), 100.0f, coolColor);
+    Line line(glm::vec2(880.0f, 200.0f), glm::vec2(1080.0f, 400.0f), 20, coolColor);
+
+    std::vector<Drawable*> drawables = { &rect, &circle, &line };
 
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     
@@ -29,10 +33,8 @@ int main() {
         glm::mat4 model(1.0f);
         glm::mat4 transform = projection * view * model;
         shaderProgram.setMat4("transform", transform);
-        rect.draw(shaderProgram);
-        circle.draw(shaderProgram);
-
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        for (const Drawable* drawable : drawables)
+            drawable->draw(shaderProgram);
     });
     
     glfwTerminate();

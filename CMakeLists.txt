@@ -28,6 +28,7 @@ add_library(GraphicsEngine2DLib
     src/IndexBuffer.cpp
     src/Rect.cpp
     src/Circle.cpp
+    src/Line.cpp
 )
 target_link_libraries(GraphicsEngine2DLib PUBLIC opengl32 glad glfw glm)
 
