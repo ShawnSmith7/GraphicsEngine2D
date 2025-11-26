@@ -11,7 +11,7 @@ class Circle : public Drawable {
             const glm::vec4& color = glm::vec4(1.0f),
             unsigned int resolution = 64);
 
-        void draw(const ShaderProgram& shaderProgram) const override;
+        void draw(const ShaderProgram& shaderProgram) override;
     private:
         glm::vec2 pos;
         float radius;

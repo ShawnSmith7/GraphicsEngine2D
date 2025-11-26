@@ -1,10 +1,8 @@
 #include "Line.h"
 
-Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color) :
-    pos1(pos1), pos2(pos2), width(width), color(color) {
+Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color, Type type) :
+    pos1(pos1), pos2(pos2), width(width), color(color), type(type) {
     vertexArray.bind();
-
-    vertexPointers = vertices;
 
     vertices[0] = pos1.x;
     vertices[1] = pos1.y;
@@ -20,7 +18,7 @@ Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm:
     vertexArray.unbind();
 }
 
-void Line::draw(const ShaderProgram& shaderProgram) const {
+void Line::draw(const ShaderProgram& shaderProgram) {
     vertexArray.bind();
     shaderProgram.setVec4("color", color);
     glLineWidth(width);

@@ -5,7 +5,6 @@ Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsig
     vertexArray.bind();
 
     vertices.resize(2 * (resolution + 1));
-    vertexPointers = vertices;
 
     vertices[0] = pos.x;
     vertices[1] = pos.y;
@@ -36,7 +35,7 @@ Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsig
     vertexArray.unbind();
 }
 
-void Circle::draw(const ShaderProgram& shaderProgram) const {
+void Circle::draw(const ShaderProgram& shaderProgram) {
     vertexArray.bind();
     shaderProgram.setVec4("color", color);
     glDrawElements(GL_TRIANGLES, indexBuffer.getCount(), GL_UNSIGNED_INT, 0);

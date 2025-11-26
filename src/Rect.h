@@ -8,11 +8,10 @@ class Rect : public Drawable {
             const glm::vec2& size = glm::vec2(1.0f), 
             const glm::vec4& color = glm::vec4(1.0f));
 
-        void draw(const ShaderProgram& shaderProgram) const override;
+        void draw(const ShaderProgram& shaderProgram) override;
     private:
-        glm::vec2 pos, size;
         glm::vec4 color;
 
-        float vertices[8];
+        static const float vertices[8];
         static const unsigned int indices[6];
 };

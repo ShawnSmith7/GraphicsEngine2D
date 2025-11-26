@@ -26,6 +26,7 @@ add_library(GraphicsEngine2DLib
     src/Buffer.cpp
     src/VertexBuffer.cpp
     src/IndexBuffer.cpp
+    src/Transform.cpp
     src/Rect.cpp
     src/Circle.cpp
     src/Line.cpp

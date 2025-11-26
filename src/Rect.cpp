@@ -1,19 +1,11 @@
 #include "Rect.h"
 
 Rect::Rect(const glm::vec2& pos, const glm::vec2& size, const glm::vec4& color) :
-    pos(pos), size(size), color(color) {
+    color(color) {
+    transform.setPos(pos);
+    transform.setSize(size);
+
     vertexArray.bind();
-
-    vertexPointers = vertices;
-
-    vertices[0] = pos.x;
-    vertices[1] = pos.y;
-    vertices[2] = pos.x;
-    vertices[3] = pos.y + size.y;
-    vertices[4] = pos.x + size.x;
-    vertices[5] = pos.y + size.y;
-    vertices[6] = pos.x + size.y;
-    vertices[7] = pos.y;
 
     vertexBuffer.bind();
     vertexBuffer.setData(vertices, GL_STATIC_DRAW);
@@ -27,10 +19,18 @@ Rect::Rect(const glm::vec2& pos, const glm::vec2& size, const glm::vec4& color) 
     vertexArray.unbind();
 }
 
-void Rect::draw(const ShaderProgram& shaderProgram) const {
+void Rect::draw(const ShaderProgram& shaderProgram) {
     vertexArray.bind();
+    shaderProgram.setMat4("model", transform.getMatrix());
     shaderProgram.setVec4("color", color);
     glDrawElements(GL_TRIANGLES, indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
 }
+
+const float Rect::vertices[] = {
+    -0.5f, 0.5f,
+    -0.5f, -0.5f,
+    0.5f, -0.5f,
+    0.5f, 0.5f
+};
 
 const unsigned int Rect::indices[] = { 0, 1, 2, 2, 3, 0 };

@@ -13,9 +13,9 @@ int main() {
 
     glm::vec4 coolColor(1.0f, 0.5f, 0.2f, 1.0f);
 
-    Rect rect(glm::vec2(200.0f), glm::vec2(200.0f), coolColor);
-    Circle circle(glm::vec2(640.0f, 300.0f), 100.0f, coolColor);
-    Line line(glm::vec2(880.0f, 200.0f), glm::vec2(1080.0f, 400.0f), 20, coolColor);
+    Rect rect(glm::vec2(320.0f, 266.6f), glm::vec2(200.0f), coolColor);
+    Circle circle(glm::vec2(640.0f, 266.6f), 100.0f, coolColor);
+    Line line(glm::vec2(880.0f, 200.0f), glm::vec2(1080.0f, 400.0f), 20, coolColor, Line::Type::Rect);
 
     std::vector<Drawable*> drawables = { &rect, &circle, &line };
 
@@ -31,9 +31,10 @@ int main() {
         glm::mat4 projection = glm::ortho(0.0f, (float)window.getWidth(), (float)window.getHeight(), 0.0f, -1.0f, 1.0f);
         glm::mat4 view(1.0f);
         glm::mat4 model(1.0f);
-        glm::mat4 transform = projection * view * model;
-        shaderProgram.setMat4("transform", transform);
-        for (const Drawable* drawable : drawables)
+        shaderProgram.setMat4("projection", projection);
+        shaderProgram.setMat4("view", view);
+        shaderProgram.setMat4("model", model);
+        for (Drawable* drawable : drawables)
             drawable->draw(shaderProgram);
     });
     
