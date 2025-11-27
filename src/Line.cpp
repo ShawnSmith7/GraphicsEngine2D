@@ -1,14 +1,20 @@
 #include "Line.h"
 
 Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color, Type type) :
-    pos1(pos1), pos2(pos2), width(width), color(color), type(type) {
+    pos2(pos2), width(width), color(color), type(type) {
+    transform.setPos(pos1);
+    transform.setSize(glm::vec2(glm::length(pos2 - pos1), 1.0f));
+    transform.setRotation(atan2(pos2.y - pos1.y, pos2.x - pos1.x));
+
+    vertexArray.gen();
     vertexArray.bind();
 
-    vertices[0] = pos1.x;
-    vertices[1] = pos1.y;
-    vertices[2] = pos2.x;
-    vertices[3] = pos2.y;
+    vertices[0] = 0.0f;
+    vertices[1] = 0.0f;
+    vertices[2] = 1.0f;
+    vertices[3] = 0.0f;
     
+    vertexBuffer.gen();
     vertexBuffer.bind();
     vertexBuffer.setData(vertices, GL_STATIC_DRAW);
 
@@ -20,8 +26,9 @@ Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm:
 
 void Line::draw(const ShaderProgram& shaderProgram) {
     vertexArray.bind();
+    shaderProgram.setMat4("model", transform.getMatrix());
     shaderProgram.setVec4("color", color);
     glLineWidth(width);
-    glDrawArrays(GL_LINES, 0, 4);
+    glDrawArrays(GL_LINES, 0, 2);
     glLineWidth(1.0f);
 }
