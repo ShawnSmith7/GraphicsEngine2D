@@ -1,18 +1,19 @@
 #include "Window.h"
 #include "Rect.h"
 #include "Circle.h"
-#include "Line.cpp"
+#include "Line.h"
 
 void processInput(GLFWwindow* window);
 
 int main() {
+    
     Window window(1280, 800, "GraphicsEngine2D");
 
     ShaderProgram shaderProgram("vertex.shader", "fragment.shader");
     shaderProgram.use();
 
     glm::vec4 coolColor(1.0f, 0.5f, 0.2f, 1.0f);
-
+    
     Rect rect(glm::vec2(320.0f, 266.6f), glm::vec2(200.0f), coolColor);
     Circle circle(glm::vec2(640.0f, 266.6f), 100.0f, coolColor);
     Line line(glm::vec2(880.0f, 200.0f), glm::vec2(1080.0f, 400.0f), 20, coolColor, Line::Type::Rect);
@@ -39,6 +40,7 @@ int main() {
     });
     
     glfwTerminate();
+    
     return 0;
 }
 

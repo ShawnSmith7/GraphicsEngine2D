@@ -13,6 +13,10 @@ class Circle : public Drawable {
 
         void draw(const ShaderProgram& shaderProgram) override;
     private:
+        VertexArray vertexArray;
+        VertexBuffer vertexBuffer;
+        IndexBuffer indexBuffer;
+
         glm::vec2 pos;
         float radius;
         glm::vec4 color;
