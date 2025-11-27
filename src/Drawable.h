@@ -10,5 +10,8 @@ class Drawable {
     public:
         virtual void draw(const ShaderProgram& shaderProgram) = 0;
     protected:
+        VertexArray vertexArray;
+        VertexBuffer vertexBuffer;
+        IndexBuffer indexBuffer;
         Transform transform;
 };
