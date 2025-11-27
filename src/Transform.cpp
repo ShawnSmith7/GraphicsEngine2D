@@ -27,7 +27,7 @@ glm::mat4 Transform::getMatrix() {
 void Transform::updateMatrix() {
     glm::mat4 m(1.0f);
 
-    m = glm::translate(m, glm::vec3(pos, 1.0f));
+    m = glm::translate(m, glm::vec3(pos, 0.0f));
     m = glm::rotate(m, rotation, glm::vec3(0.0f, 0.0f, 1.0f));
     m = glm::scale(m, glm::vec3(size, 1.0f));
 

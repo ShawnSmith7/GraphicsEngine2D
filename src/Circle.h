@@ -17,8 +17,6 @@ class Circle : public Drawable {
         VertexBuffer vertexBuffer;
         IndexBuffer indexBuffer;
     
-        glm::vec2 pos;
-        float radius;
         glm::vec4 color;
         unsigned int resolution;
 

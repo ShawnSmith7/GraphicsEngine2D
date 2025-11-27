@@ -1,20 +1,25 @@
 #include "Circle.h"
 
 Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsigned int resolution) :
-    pos(pos), radius(radius), color(color), resolution(resolution) {
+    color(color), resolution(resolution) {
+    transform.setPos(pos);
+    transform.setSize(glm::vec2(radius));
+    
+    vertexArray.gen();
     vertexArray.bind();
 
     vertices.resize(2 * (resolution + 1));
 
-    vertices[0] = pos.x;
-    vertices[1] = pos.y;
+    vertices[0] = 0.0f;
+    vertices[1] = 0.0f;
     float stride = 2.0f * std::numbers::pi / resolution;
     for (unsigned int i = 0; i < resolution; i++) {
         float angle = i * stride;
-        vertices[2 + 2 * i] = radius * cos(i * stride) + pos.x;
-        vertices[3 + 2 * i] = radius * sin(i * stride) + pos.y;
+        vertices[2 + 2 * i] = cos(angle);
+        vertices[3 + 2 * i] = sin(angle);
     }
 
+    vertexBuffer.gen();
     vertexBuffer.bind();
     vertexBuffer.setData(vertices, GL_STATIC_DRAW);
 
@@ -26,6 +31,7 @@ Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsig
         indices[3 * i + 2] = (i + 1) % resolution + 1;
     }
 
+    indexBuffer.gen();
     indexBuffer.bind();
     indexBuffer.setData(indices, GL_STATIC_DRAW);
     
@@ -37,6 +43,7 @@ Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsig
 
 void Circle::draw(const ShaderProgram& shaderProgram) {
     vertexArray.bind();
+    shaderProgram.setMat4("model", transform.getMatrix());
     shaderProgram.setVec4("color", color);
     glDrawElements(GL_TRIANGLES, indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
 }

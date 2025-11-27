@@ -23,4 +23,5 @@ void Line::draw(const ShaderProgram& shaderProgram) {
     shaderProgram.setVec4("color", color);
     glLineWidth(width);
     glDrawArrays(GL_LINES, 0, 4);
+    glLineWidth(1.0f);
 }

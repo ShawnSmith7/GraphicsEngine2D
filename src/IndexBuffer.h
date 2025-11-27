@@ -23,5 +23,5 @@ class IndexBuffer : public Buffer {
             Buffer::setData(GL_ELEMENT_ARRAY_BUFFER, data, usage);
         }
     private:
-        size_t count;
+        size_t count = 0;
 };

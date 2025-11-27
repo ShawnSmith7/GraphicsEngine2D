@@ -14,7 +14,7 @@ int main() {
     glm::vec4 coolColor(1.0f, 0.5f, 0.2f, 1.0f);
 
     Rect rect(glm::vec2(320.0f, 266.6f), glm::vec2(200.0f), coolColor);
-    Circle circle(glm::vec2(640.0f, 266.6f), 100.0f, coolColor);
+    Circle circle(glm::vec2(640.0f, 266.6f), 100.0f, coolColor, 64);
     Line line(glm::vec2(880.0f, 200.0f), glm::vec2(1080.0f, 400.0f), 20, coolColor, Line::Type::Rect);
 
     std::vector<Drawable*> drawables = { &rect, &circle, &line };
