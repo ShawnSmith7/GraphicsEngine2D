@@ -9,6 +9,8 @@ class Buffer {
         Buffer();
         ~Buffer();
 
+        void gen();
+
         void bind(GLenum target) const;
         static void unbind(GLenum target);
 

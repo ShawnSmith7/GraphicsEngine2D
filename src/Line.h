@@ -14,6 +14,10 @@ class Line : public Drawable {
 
         void draw(const ShaderProgram& shaderProgram) override;
     private:
+        VertexArray vertexArray;
+        VertexBuffer vertexBuffer;
+        IndexBuffer indexBuffer;
+
         glm::vec2 pos1, pos2;
         float width;
         glm::vec4 color;

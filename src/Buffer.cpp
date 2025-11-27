@@ -1,11 +1,14 @@
 #include "Buffer.h"
 
-Buffer::Buffer() {
-    glGenBuffers(1, &ID);
-}
+Buffer::Buffer() :
+    ID(0) {}
 
 Buffer::~Buffer() {
     glDeleteBuffers(1, &ID);
+}
+
+void Buffer::gen() {
+    glGenBuffers(1, &ID);
 }
 
 void Buffer::bind(GLenum target) const {

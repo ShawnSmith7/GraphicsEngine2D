@@ -10,6 +10,10 @@ class Rect : public Drawable {
 
         void draw(const ShaderProgram& shaderProgram) override;
     private:
+        static VertexArray vertexArray;
+        static VertexBuffer vertexBuffer;
+        static IndexBuffer indexBuffer;
+    
         glm::vec4 color;
 
         static const float vertices[8];

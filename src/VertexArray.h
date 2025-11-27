@@ -7,6 +7,8 @@ class VertexArray {
         VertexArray();
         ~VertexArray();
 
+        void gen();
+
         void bind() const;
         static void unbind();
 
