@@ -64,9 +64,10 @@ void Transform::updateMatrix() {
     glm::mat4 m(1.0f);
 
     m = glm::translate(m, glm::vec3(translation, 0.0f));
+    m = glm::translate(m, glm::vec3(origin, 0.0f));
     m = glm::rotate(m, rotation, glm::vec3(0.0f, 0.0f, 1.0f));
     m = glm::scale(m, glm::vec3(scaling, 1.0f));
-    m = glm::translate(m, glm::vec3(origin, 0.0f));
+    m = glm::translate(m, glm::vec3(-origin, 0.0f));
 
     matrix = m;
     dirty = false;

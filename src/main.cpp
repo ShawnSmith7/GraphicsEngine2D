@@ -17,11 +17,11 @@ int main() {
     Rect rect(glm::vec2(320.0f, 266.7f), glm::vec2(200.0f), coolColor);
     Circle circle(glm::vec2(640.0f, 266.7f), 100.0f, coolColor, 64);
     Line line(glm::vec2(880.0f, 166.7f), glm::vec2(1080.0f, 366.7f), 20.0f, coolColor);
-    ThickLine thickLine(glm::vec2(320.0f, 533.3f), glm::vec2(520.0f, 733.3f), 20.0f, coolColor, ThickLine::Type::Default);
-    
+    ThickLine thickLine(glm::vec2(220.0f, 433.3f), glm::vec2(420.0f, 633.3f), 20.0f, coolColor, ThickLine::Type::Default);
+
     std::vector<Drawable*> drawables = { &rect, &circle, &line, &thickLine };
 
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
