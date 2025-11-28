@@ -11,6 +11,16 @@ class Circle : public Drawable {
             const glm::vec4& color = glm::vec4(1.0f),
             unsigned int resolution = 64);
 
+        glm::vec2 getPos() const;
+        float getRadius() const;
+        glm::vec4 getColor() const;
+        unsigned int getResolution() const;
+
+        void setPos(const glm::vec2& pos);
+        void setRadius(float radius);
+        void setColor(const glm::vec4& color);
+        void setResolution(unsigned int resolution);
+
         void draw(const ShaderProgram& shaderProgram) override;
     private:
         VertexArray vertexArray;
@@ -22,4 +32,6 @@ class Circle : public Drawable {
 
         std::vector<float> vertices;
         std::vector<unsigned int> indices;
+
+        void genGeometry();
 };

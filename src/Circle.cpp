@@ -2,9 +2,53 @@
 
 Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsigned int resolution) :
     color(color), resolution(resolution) {
-    transform.setTranslation(pos);
-    transform.setScaling(glm::vec2(radius));
+    setPos(pos);
+    setRadius(radius);
     
+    genGeometry();
+}
+
+glm::vec2 Circle::getPos() const {
+    return transform.getTranslation();
+}
+
+float Circle::getRadius() const {
+    return transform.getScaling().x;
+}
+
+glm::vec4 Circle::getColor() const {
+    return color;
+}
+
+unsigned int Circle::getResolution() const {
+    return resolution;
+}
+
+void Circle::setPos(const glm::vec2& pos) {
+    transform.setTranslation(pos);
+}
+
+void Circle::setRadius(float radius) {
+    transform.setScaling(glm::vec2(radius));
+}
+
+void Circle::setColor(const glm::vec4& color) {
+    this->color = color;
+}
+
+void Circle::setResolution(unsigned int resolution) {
+    this->resolution = resolution;
+    genGeometry();
+}
+
+void Circle::draw(const ShaderProgram& shaderProgram) {
+    vertexArray.bind();
+    shaderProgram.setMat4("model", transform.getMatrix());
+    shaderProgram.setVec4("color", color);
+    glDrawElements(GL_TRIANGLES, indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
+}
+
+void Circle::genGeometry() {
     vertexArray.gen();
     vertexArray.bind();
 
@@ -39,11 +83,4 @@ Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsig
     vertexArray.setAttributePointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), 0);
 
     vertexArray.unbind();
-}
-
-void Circle::draw(const ShaderProgram& shaderProgram) {
-    vertexArray.bind();
-    shaderProgram.setMat4("model", transform.getMatrix());
-    shaderProgram.setVec4("color", color);
-    glDrawElements(GL_TRIANGLES, indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
 }
