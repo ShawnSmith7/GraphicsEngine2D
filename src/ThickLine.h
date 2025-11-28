@@ -12,6 +12,10 @@ class ThickLine : public Line {
             float width = 1.0f,
             const glm::vec4& color = glm::vec4(1.0f), Type type = Type::Default);
 
+        Type getType() const;
+
+        void setType(Type type);
+
         void draw(const ShaderProgram& shaderProgram) override;
     private:
         Type type;

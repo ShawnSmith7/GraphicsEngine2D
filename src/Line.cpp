@@ -63,8 +63,9 @@ void Line::draw(const ShaderProgram& shaderProgram) {
     glLineWidth(1.0f);
 }
 
-Line::Line(const glm::vec2& pos2, float width, const glm::vec4& color) :
+Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color, DontGenerateGeometry) :
     pos2(pos2), width(width), color(color) {
+    updateTransform(pos1, pos2);
 }
 
 VertexArray Line::vertexArray;
