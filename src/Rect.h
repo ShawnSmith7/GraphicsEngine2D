@@ -8,6 +8,14 @@ class Rect : public Drawable {
             const glm::vec2& size = glm::vec2(1.0f), 
             const glm::vec4& color = glm::vec4(1.0f));
 
+        glm::vec2 getPos() const;
+        glm::vec2 getSize() const;
+        glm::vec4 getColor() const;
+
+        void setPos(const glm::vec2& pos);
+        void setSize(const glm::vec2& size);
+        void setColor(const glm::vec4& color);
+
         void draw(const ShaderProgram& shaderProgram) override;
     private:
         static VertexArray vertexArray;

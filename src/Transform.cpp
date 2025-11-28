@@ -3,6 +3,24 @@
 Transform::Transform(const glm::vec2& translation, const glm::vec2& scaling, float rotation) :
     translation(translation), scaling(scaling), rotation(rotation), dirty(true) {}
 
+glm::vec2 Transform::getTranslation() const {
+    return translation;
+}
+
+glm::vec2 Transform::getScaling() const {
+    return scaling;
+}
+
+float Transform::getRotation() const {
+    return rotation;
+}
+
+glm::mat4 Transform::getMatrix() {
+    if (dirty)
+        updateMatrix();
+    return matrix;
+}
+
 void Transform::setTranslation(const glm::vec2& translation) {
     this->translation = translation;
     dirty = true;
@@ -18,34 +36,19 @@ void Transform::setRotation(float rotation) {
     dirty = true;
 }
 
-glm::vec2 Transform::getTranslation() const {
-    return translation;
-}
-
-glm::vec2 Transform::getScaling() const {
-    return scaling;
-}
-
-float Transform::getRotation() const {
-    return rotation;
-}
-
 void Transform::translate(const glm::vec2& translation) {
     this->translation += translation;
+    dirty = true;
 }
 
 void Transform::scale(const glm::vec2& scale) {
     scaling *= scale;
+    dirty = true;
 }
 
 void Transform::rotate(float rotation) {
     this->rotation += rotation;
-}
-
-glm::mat4 Transform::getMatrix() {
-    if (dirty)
-        updateMatrix();
-    return matrix;
+    dirty = true;
 }
 
 void Transform::updateMatrix() {

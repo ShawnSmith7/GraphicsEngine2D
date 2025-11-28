@@ -27,6 +27,30 @@ Rect::Rect(const glm::vec2& pos, const glm::vec2& size, const glm::vec4& color) 
     }
 }
 
+glm::vec2 Rect::getPos() const {
+    return transform.getTranslation();
+}
+
+glm::vec2 Rect::getSize() const {
+    return transform.getScaling();
+}
+
+glm::vec4 Rect::getColor() const {
+    return color;
+}
+
+void Rect::setPos(const glm::vec2& pos) {
+    transform.setTranslation(pos);
+}
+
+void Rect::setSize(const glm::vec2& size) {
+    transform.setScaling(size);
+}
+
+void Rect::setColor(const glm::vec4& color) {
+    this->color = color;
+}
+
 void Rect::draw(const ShaderProgram& shaderProgram) {
     vertexArray.bind();
     shaderProgram.setMat4("model", transform.getMatrix());
