@@ -30,6 +30,7 @@ add_library(GraphicsEngine2DLib
     src/Rect.cpp
     src/Circle.cpp
     src/Line.cpp
+    src/ThickLine.cpp
 )
 target_link_libraries(GraphicsEngine2DLib PUBLIC opengl32 glad glfw glm)
 

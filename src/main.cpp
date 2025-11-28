@@ -1,7 +1,8 @@
 #include "Window.h"
 #include "Rect.h"
 #include "Circle.h"
-#include "Line.cpp"
+#include "Line.h"
+#include "ThickLine.h"
 
 void processInput(GLFWwindow* window);
 
@@ -13,11 +14,12 @@ int main() {
 
     glm::vec4 coolColor(1.0f, 0.5f, 0.2f, 1.0f);
 
-    Rect rect(glm::vec2(320.0f, 266.6f), glm::vec2(200.0f), coolColor);
-    Circle circle(glm::vec2(640.0f, 266.6f), 100.0f, coolColor, 64);
-    Line line(glm::vec2(880.0f, 166.0f), glm::vec2(1080.0f, 366.0f), 20, coolColor, Line::Type::Rect);
+    Rect rect(glm::vec2(320.0f, 266.7f), glm::vec2(200.0f), coolColor);
+    Circle circle(glm::vec2(640.0f, 266.7f), 100.0f, coolColor, 64);
+    Line line(glm::vec2(880.0f, 166.7f), glm::vec2(1080.0f, 366.7f), 20.0f, coolColor);
+    ThickLine thickLine(glm::vec2(320.0f, 533.3f), glm::vec2(520.0f, 733.3f), 20.0f, coolColor, ThickLine::Type::Default);
 
-    std::vector<Drawable*> drawables = { &rect, &circle, &line };
+    std::vector<Drawable*> drawables = { &rect, &circle, &line, &thickLine };
 
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     

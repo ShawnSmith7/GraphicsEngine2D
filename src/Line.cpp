@@ -1,27 +1,26 @@
 #include "Line.h"
 
-Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color, Type type) :
-    pos2(pos2), width(width), color(color), type(type) {
-    transform.setPos(pos1);
-    transform.setSize(glm::vec2(glm::length(pos2 - pos1), 1.0f));
+Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color) :
+    pos2(pos2), width(width), color(color) {
+    transform.setTranslation(pos1);
+    transform.setScaling(glm::vec2(glm::length(pos2 - pos1), 1.0f));
     transform.setRotation(atan2(pos2.y - pos1.y, pos2.x - pos1.x));
-
-    vertexArray.gen();
-    vertexArray.bind();
-
-    vertices[0] = 0.0f;
-    vertices[1] = 0.0f;
-    vertices[2] = 1.0f;
-    vertices[3] = 0.0f;
     
-    vertexBuffer.gen();
-    vertexBuffer.bind();
-    vertexBuffer.setData(vertices, GL_STATIC_DRAW);
+    static bool initialized = false;
+    if (!initialized) {
+        initialized = true;
+        vertexArray.gen();
+        vertexArray.bind();
 
-    vertexArray.enableAttribute(0);
-    vertexArray.setAttributePointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), 0);
+        vertexBuffer.gen();
+        vertexBuffer.bind();
+        vertexBuffer.setData(vertices, GL_STATIC_DRAW);
 
-    vertexArray.unbind();
+        vertexArray.enableAttribute(0);
+        vertexArray.setAttributePointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), 0);
+
+        vertexArray.unbind();
+    }
 }
 
 void Line::draw(const ShaderProgram& shaderProgram) {
@@ -32,3 +31,12 @@ void Line::draw(const ShaderProgram& shaderProgram) {
     glDrawArrays(GL_LINES, 0, 2);
     glLineWidth(1.0f);
 }
+
+Line::Line(const glm::vec2& pos2, float width, const glm::vec4& color) :
+    pos2(pos2), width(width), color(color) {
+}
+
+VertexArray Line::vertexArray;
+VertexBuffer Line::vertexBuffer;
+
+const float Line::vertices[] = { 0.0f, 0.0f, 1.0f, 0.0f };

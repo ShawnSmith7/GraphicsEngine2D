@@ -2,8 +2,8 @@
 
 Rect::Rect(const glm::vec2& pos, const glm::vec2& size, const glm::vec4& color) :
     color(color) {
-    transform.setPos(pos);
-    transform.setSize(size);
+    transform.setTranslation(pos);
+    transform.setScaling(size);
 
     static bool initialized = false;
     if (!initialized) {

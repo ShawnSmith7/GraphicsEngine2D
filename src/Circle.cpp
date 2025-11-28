@@ -2,8 +2,8 @@
 
 Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsigned int resolution) :
     color(color), resolution(resolution) {
-    transform.setPos(pos);
-    transform.setSize(glm::vec2(radius));
+    transform.setTranslation(pos);
+    transform.setScaling(glm::vec2(radius));
     
     vertexArray.gen();
     vertexArray.bind();
