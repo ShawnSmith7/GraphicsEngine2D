@@ -1,9 +1,11 @@
 #include "Circle.h"
 
-Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsigned int resolution) :
+Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsigned int resolution, float rotation, const glm::vec2& origin) :
     color(color), resolution(resolution) {
     setPos(pos);
     setRadius(radius);
+    setRotation(rotation);
+    setOrigin(origin);
     
     genGeometry();
 }
@@ -24,6 +26,14 @@ unsigned int Circle::getResolution() const {
     return resolution;
 }
 
+float Circle::getRotation() const {
+    return transform.getRotation();
+}
+
+glm::vec2 Circle::getOrigin() const {
+    return transform.getOrigin();
+}
+
 void Circle::setPos(const glm::vec2& pos) {
     transform.setTranslation(pos);
 }
@@ -39,6 +49,14 @@ void Circle::setColor(const glm::vec4& color) {
 void Circle::setResolution(unsigned int resolution) {
     this->resolution = resolution;
     genGeometry();
+}
+
+void Circle::setRotation(float rotation) {
+    transform.setRotation(rotation);
+}
+
+void Circle::setOrigin(const glm::vec2& origin) {
+    transform.setOrigin(origin);
 }
 
 void Circle::draw(const ShaderProgram& shaderProgram) {

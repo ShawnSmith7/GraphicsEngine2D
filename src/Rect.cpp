@@ -1,9 +1,11 @@
 #include "Rect.h"
 
-Rect::Rect(const glm::vec2& pos, const glm::vec2& size, const glm::vec4& color) :
+Rect::Rect(const glm::vec2& pos, const glm::vec2& size, const glm::vec4& color, float rotation, const glm::vec2& origin) :
     color(color) {
     setPos(pos);
     setSize(size);
+    setRotation(rotation);
+    setOrigin(origin);
 
     static bool initialized = false;
     if (!initialized) {
@@ -39,6 +41,14 @@ glm::vec4 Rect::getColor() const {
     return color;
 }
 
+float Rect::getRotation() const {
+    return transform.getRotation();
+}
+
+glm::vec2 Rect::getOrigin() const {
+    return transform.getOrigin();
+}
+
 void Rect::setPos(const glm::vec2& pos) {
     transform.setTranslation(pos);
 }
@@ -49,6 +59,14 @@ void Rect::setSize(const glm::vec2& size) {
 
 void Rect::setColor(const glm::vec4& color) {
     this->color = color;
+}
+
+void Rect::setRotation(float rotation) {
+    transform.setRotation(rotation);
+}
+
+void Rect::setOrigin(const glm::vec2& origin) {
+    transform.setOrigin(origin);
 }
 
 void Rect::draw(const ShaderProgram& shaderProgram) {
