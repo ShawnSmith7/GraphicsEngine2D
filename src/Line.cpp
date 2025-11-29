@@ -5,27 +5,15 @@ Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm:
     setPos1(pos1);
     setWidth(width);
     
-    static bool initialized = false;
-    if (!initialized) {
-        initialized = true;
-        vertexArray.gen();
-        vertexArray.bind();
-
-        vertexBuffer.gen();
-        vertexBuffer.bind();
-        vertexBuffer.setData(vertices, GL_STATIC_DRAW);
-
-        vertexArray.enableAttribute(0);
-        vertexArray.setAttributePointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), 0);
-
-        vertexArray.unbind();
-    }
+    genGeometry();
 }
 
 Line::Line(const glm::vec2& pos1, float length, float width, float rotation, const glm::vec4& color) :
     pos2(findPos2(pos1, length, rotation)), color(color) {
     setPos1(pos1);
     setWidth(width);
+
+    genGeometry();
 }
 
 glm::vec2 Line::getPos1() const {
@@ -93,7 +81,7 @@ void Line::draw(const ShaderProgram& shaderProgram) {
     glLineWidth(1.0f);
 }
 
-Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color, DontGenerateGeometry) :
+Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color, DontGenGeometry) :
     pos2(pos2), color(color) {
     setPos1(pos1);
     setWidth(width);
@@ -103,6 +91,24 @@ VertexArray Line::vertexArray;
 VertexBuffer Line::vertexBuffer;
 
 const float Line::vertices[] = { 0.0f, 0.0f, 1.0f, 0.0f };
+
+void Line::genGeometry() const {
+    static bool initialized = false;
+    if (!initialized) {
+        initialized = true;
+        vertexArray.gen();
+        vertexArray.bind();
+
+        vertexBuffer.gen();
+        vertexBuffer.bind();
+        vertexBuffer.setData(vertices, GL_STATIC_DRAW);
+
+        vertexArray.enableAttribute(0);
+        vertexArray.setAttributePointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), 0);
+
+        vertexArray.unbind();
+    }
+}
 
 glm::vec2 Line::findPos2(const glm::vec2& pos1, float length, float rotation) {
     return pos1 + length * glm::vec2(cos(rotation), sin(rotation));

@@ -45,21 +45,6 @@ void Transform::setOrigin(const glm::vec2& origin) {
     dirty = true;
 }
 
-void Transform::translate(const glm::vec2& translation) {
-    this->translation += translation;
-    dirty = true;
-}
-
-void Transform::scale(const glm::vec2& scale) {
-    scaling *= scale;
-    dirty = true;
-}
-
-void Transform::rotate(float rotation) {
-    this->rotation += rotation;
-    dirty = true;
-}
-
 void Transform::updateMatrix() {
     glm::mat4 m(1.0f);
 

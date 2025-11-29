@@ -19,10 +19,6 @@ class Transform {
         void setScaling(const glm::vec2& scaling);
         void setRotation(float rotation);
         void setOrigin(const glm::vec2& origin);
-
-        void translate(const glm::vec2& translation);
-        void scale(const glm::vec2& scale);
-        void rotate(float rotation);
     private:
         glm::vec2 translation, scaling, origin;
         float rotation;

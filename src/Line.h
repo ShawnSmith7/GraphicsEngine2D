@@ -27,8 +27,8 @@ class Line : public Drawable {
 
         void draw(const ShaderProgram& shaderProgram) override;
     protected:
-        struct DontGenerateGeometry {};
-        Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color, DontGenerateGeometry);
+        struct DontGenGeometry {};
+        Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color, DontGenGeometry);
 
         glm::vec2 pos2;
         glm::vec4 color;
@@ -37,6 +37,8 @@ class Line : public Drawable {
         static VertexBuffer vertexBuffer;
 
         static const float vertices[4];
+
+        void genGeometry() const;
 
         static glm::vec2 findPos2(const glm::vec2& pos1, float length, float rotation);
 };

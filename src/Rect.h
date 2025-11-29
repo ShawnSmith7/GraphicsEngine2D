@@ -10,6 +10,8 @@ class Rect : public Drawable {
             float rotation = 0.0f,
             const glm::vec2& origin = glm::vec2(0.0f));
 
+        Rect(const Transform& transform, const glm::vec4& color);
+
         glm::vec2 getPos() const;
         glm::vec2 getSize() const;
         glm::vec4 getColor() const;
@@ -32,4 +34,6 @@ class Rect : public Drawable {
 
         static const float vertices[8];
         static const unsigned int indices[6];
+
+        void genGeometry() const;
 };
