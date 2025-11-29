@@ -9,15 +9,21 @@ class Line : public Drawable {
             float width = 1.0f,
             const glm::vec4& color = glm::vec4(1.0f));
 
+        Line(const glm::vec2& pos1, float length, float width, float rotation, const glm::vec4& color);
+
         glm::vec2 getPos1() const;
         glm::vec2 getPos2() const;
         float getWidth() const;
         glm::vec4 getColor() const;
+        float getLength() const;
+        float getRotation() const;
 
         void setPos1(const glm::vec2& pos1);
         void setPos2(const glm::vec2& pos2);
         void setWidth(float width);
         void setColor(const glm::vec4& color);
+        void setLength(float length);
+        void setRotation(float rotation);
 
         void draw(const ShaderProgram& shaderProgram) override;
     protected:
@@ -25,7 +31,6 @@ class Line : public Drawable {
         Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color, DontGenerateGeometry);
 
         glm::vec2 pos2;
-        float width;
         glm::vec4 color;
     private:
         static VertexArray vertexArray;
@@ -33,5 +38,5 @@ class Line : public Drawable {
 
         static const float vertices[4];
 
-        void updateTransform(const glm::vec2& pos1, const glm::vec2& pos2);
+        static glm::vec2 findPos2(const glm::vec2& pos1, float length, float rotation);
 };
