@@ -6,7 +6,11 @@ Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsig
     setRadius(radius);
     setRotation(rotation);
     setOrigin(origin);
-    
+
+    vertexArray.gen();
+    vertexBuffer.gen();
+    indexBuffer.gen();
+
     genGeometry();
 }
 
@@ -66,12 +70,19 @@ void Circle::draw(const ShaderProgram& shaderProgram) {
     glDrawElements(GL_TRIANGLE_FAN, indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
 }
 
-void Circle::genGeometry() {
+Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsigned int resolution, float rotation, const glm::vec2& origin, DontGenGeometry) :
+    color(color), resolution(resolution) {
+    setPos(pos);
+    setRadius(radius);
+    setRotation(rotation);
+    setOrigin(origin);
+
     vertexArray.gen();
-    vertexArray.bind();
+    vertexBuffer.gen();
+}
 
+void Circle::genGeometry() {
     vertices.resize(2 * (resolution + 1));
-
     vertices[0] = 0.0f;
     vertices[1] = 0.0f;
     float stride = 2.0f * std::numbers::pi / resolution;
@@ -81,17 +92,16 @@ void Circle::genGeometry() {
         vertices[3 + 2 * i] = sin(angle);
     }
 
-    vertexBuffer.gen();
-    vertexBuffer.bind();
-    vertexBuffer.setData(vertices, GL_STATIC_DRAW);
-
     indices.resize(resolution + 2);
-
     for (unsigned int i = 0; i < resolution + 1; i++)
         indices[i] = i;
     indices[resolution + 1] = 1;
 
-    indexBuffer.gen();
+    vertexArray.bind();
+
+    vertexBuffer.bind();
+    vertexBuffer.setData(vertices, GL_STATIC_DRAW);
+
     indexBuffer.bind();
     indexBuffer.setData(indices, GL_STATIC_DRAW);
     

@@ -28,15 +28,18 @@ class Circle : public Drawable {
         void setOrigin(const glm::vec2& origin);
 
         void draw(const ShaderProgram& shaderProgram) override;
-    private:
+    protected:
+        Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsigned int resolution, float rotation, const glm::vec2& origin, DontGenGeometry);
+    
         VertexArray vertexArray;
         VertexBuffer vertexBuffer;
-        IndexBuffer indexBuffer;
     
         glm::vec4 color;
         unsigned int resolution;
 
         std::vector<float> vertices;
+    private:
+        IndexBuffer indexBuffer;
         std::vector<unsigned int> indices;
 
         void genGeometry();

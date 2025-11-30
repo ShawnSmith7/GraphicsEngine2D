@@ -29,6 +29,7 @@ add_library(GraphicsEngine2DLib
     src/Transform.cpp
     src/Rect.cpp
     src/Circle.cpp
+    src/SemiCircle.cpp
     src/Line.cpp
     src/ThickLine.cpp
 )

@@ -27,7 +27,6 @@ class Line : public Drawable {
 
         void draw(const ShaderProgram& shaderProgram) override;
     protected:
-        struct DontGenGeometry {};
         Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color, DontGenGeometry);
 
         glm::vec2 pos2;
