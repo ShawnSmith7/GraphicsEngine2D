@@ -3,6 +3,7 @@
 SemiCircle::SemiCircle(const glm::vec2& pos, float radius, const glm::vec4& color, float arc, unsigned int resolution, float rotation, const glm::vec2& origin) :
     Circle(pos, radius, color, resolution, rotation, origin, DontGenGeometry{}), arc(arc) {
         genGeometry();
+        std::cout << "this happened\n";
     }
 
 float SemiCircle::getArc() const {

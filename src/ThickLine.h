@@ -2,6 +2,7 @@
 
 #include "Line.h"
 #include "Rect.h"
+#include "SemiCircle.h"
 
 class ThickLine : public Line {
     public:
@@ -21,4 +22,5 @@ class ThickLine : public Line {
         Type type;
 
         Rect rect;
+        SemiCircle startCap, endCap;
 };

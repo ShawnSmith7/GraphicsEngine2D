@@ -1,5 +1,4 @@
 #include "Window.h"
-#include "SemiCircle.h"
 #include "ThickLine.h"
 
 void processInput(GLFWwindow* window);
