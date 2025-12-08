@@ -32,6 +32,7 @@ add_library(GraphicsEngine2DLib
     src/SemiCircle.cpp
     src/Line.cpp
     src/ThickLine.cpp
+    src/RoundThickLine.cpp
 )
 target_link_libraries(GraphicsEngine2DLib PUBLIC opengl32 glad glfw glm)
 

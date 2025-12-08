@@ -87,6 +87,10 @@ Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm:
     setWidth(width);
 }
 
+glm::vec2 Line::findPos2(const glm::vec2& pos1, float length, float rotation) {
+    return pos1 + length * glm::vec2(cos(rotation), sin(rotation));
+}
+
 VertexArray Line::vertexArray;
 VertexBuffer Line::vertexBuffer;
 
@@ -108,8 +112,4 @@ void Line::genGeometry() const {
 
         vertexArray.unbind();
     }
-}
-
-glm::vec2 Line::findPos2(const glm::vec2& pos1, float length, float rotation) {
-    return pos1 + length * glm::vec2(cos(rotation), sin(rotation));
 }

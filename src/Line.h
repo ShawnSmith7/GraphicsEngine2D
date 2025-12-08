@@ -31,6 +31,8 @@ class Line : public Drawable {
 
         glm::vec2 pos2;
         glm::vec4 color;
+
+        static glm::vec2 findPos2(const glm::vec2& pos1, float length, float rotation);
     private:
         static VertexArray vertexArray;
         static VertexBuffer vertexBuffer;
@@ -38,6 +40,4 @@ class Line : public Drawable {
         static const float vertices[4];
 
         void genGeometry() const;
-
-        static glm::vec2 findPos2(const glm::vec2& pos1, float length, float rotation);
 };
