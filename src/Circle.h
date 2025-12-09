@@ -28,9 +28,7 @@ class Circle : public Drawable {
         void setOrigin(const glm::vec2& origin);
 
         void draw(const ShaderProgram& shaderProgram) override;
-    protected:
-        Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsigned int resolution, float rotation, const glm::vec2& origin, DontGenGeometry);
-    
+    protected:    
         VertexArray vertexArray;
         VertexBuffer vertexBuffer;
     

@@ -10,7 +10,5 @@ class Drawable {
     public:
         virtual void draw(const ShaderProgram& shaderProgram) = 0;
     protected:
-        struct DontGenGeometry {};
-
         Transform transform;
 };

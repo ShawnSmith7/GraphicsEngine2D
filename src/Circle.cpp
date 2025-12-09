@@ -10,8 +10,6 @@ Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsig
     vertexArray.gen();
     vertexBuffer.gen();
     indexBuffer.gen();
-
-    genGeometry();
 }
 
 glm::vec2 Circle::getPos() const {
@@ -52,7 +50,6 @@ void Circle::setColor(const glm::vec4& color) {
 
 void Circle::setResolution(unsigned int resolution) {
     this->resolution = resolution;
-    genGeometry();
 }
 
 void Circle::setRotation(float rotation) {
@@ -68,17 +65,6 @@ void Circle::draw(const ShaderProgram& shaderProgram) {
     shaderProgram.setMat4("model", transform.getMatrix());
     shaderProgram.setVec4("color", color);
     glDrawElements(GL_TRIANGLE_FAN, indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
-}
-
-Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsigned int resolution, float rotation, const glm::vec2& origin, DontGenGeometry) :
-    color(color), resolution(resolution) {
-    setPos(pos);
-    setRadius(radius);
-    setRotation(rotation);
-    setOrigin(origin);
-
-    vertexArray.gen();
-    vertexBuffer.gen();
 }
 
 void Circle::genGeometry() {

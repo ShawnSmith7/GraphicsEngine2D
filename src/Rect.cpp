@@ -6,15 +6,11 @@ Rect::Rect(const glm::vec2& pos, const glm::vec2& size, const glm::vec4& color, 
     setSize(size);
     setRotation(rotation);
     setOrigin(origin);
-
-    genGeometry();
 }
 
 Rect::Rect(const Transform& transform, const glm::vec4& color) :
     color(color) {
     this->transform = transform;
-
-    genGeometry();
 }
 
 glm::vec2 Rect::getPos() const {

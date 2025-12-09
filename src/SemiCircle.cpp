@@ -1,10 +1,7 @@
 #include "SemiCircle.h"
 
 SemiCircle::SemiCircle(const glm::vec2& pos, float radius, const glm::vec4& color, float arc, unsigned int resolution, float rotation, const glm::vec2& origin) :
-    Circle(pos, radius, color, resolution, rotation, origin, DontGenGeometry{}), arc(arc) {
-        genGeometry();
-        std::cout << "this happened\n";
-    }
+    Circle(pos, radius, color, resolution, rotation, origin), arc(arc) {}
 
 float SemiCircle::getArc() const {
     return arc;
@@ -12,7 +9,6 @@ float SemiCircle::getArc() const {
 
 void SemiCircle::setArc(float arc) {
     this->arc = arc;
-    genGeometry();
 }
 
 void SemiCircle::draw(const ShaderProgram& shaderProgram) {

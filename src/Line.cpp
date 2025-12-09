@@ -4,16 +4,12 @@ Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm:
     pos2(pos2), color(color) {
     setPos1(pos1);
     setWidth(width);
-    
-    genGeometry();
 }
 
 Line::Line(const glm::vec2& pos1, float length, float width, float rotation, const glm::vec4& color) :
     pos2(findPos2(pos1, length, rotation)), color(color) {
     setPos1(pos1);
     setWidth(width);
-
-    genGeometry();
 }
 
 glm::vec2 Line::getPos1() const {
@@ -79,12 +75,6 @@ void Line::draw(const ShaderProgram& shaderProgram) {
     glLineWidth(getWidth());
     glDrawArrays(GL_LINES, 0, 2);
     glLineWidth(1.0f);
-}
-
-Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color, DontGenGeometry) :
-    pos2(pos2), color(color) {
-    setPos1(pos1);
-    setWidth(width);
 }
 
 glm::vec2 Line::findPos2(const glm::vec2& pos1, float length, float rotation) {
