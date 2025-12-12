@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Drawable.h"
+#include "GeometryManager.h"
 
 class Rect : public Drawable {
     public:
@@ -26,14 +27,13 @@ class Rect : public Drawable {
 
         void draw(const ShaderProgram& shaderProgram) override;
     private:
-        static VertexArray vertexArray;
-        static VertexBuffer vertexBuffer;
         static IndexBuffer indexBuffer;
     
         glm::vec4 color;
 
-        static const float vertices[8];
         static const unsigned int indices[6];
 
-        void genGeometry() const;
+        //void genGeometry() const;
+
+        std::shared_ptr<Geometry> geometryPtr;
 };
