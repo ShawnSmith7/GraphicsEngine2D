@@ -7,9 +7,7 @@ Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsig
     setRotation(rotation);
     setOrigin(origin);
 
-    vertexArray.gen();
-    vertexBuffer.gen();
-    indexBuffer.gen();
+    geometryPtr = GeometryManager::get().getCircle(resolution);
 }
 
 glm::vec2 Circle::getPos() const {
@@ -50,6 +48,7 @@ void Circle::setColor(const glm::vec4& color) {
 
 void Circle::setResolution(unsigned int resolution) {
     this->resolution = resolution;
+    geometryPtr = GeometryManager::get().getCircle(resolution);
 }
 
 void Circle::setRotation(float rotation) {
@@ -61,38 +60,8 @@ void Circle::setOrigin(const glm::vec2& origin) {
 }
 
 void Circle::draw(const ShaderProgram& shaderProgram) {
-    vertexArray.bind();
+    geometryPtr->vertexArray.bind();
     shaderProgram.setMat4("model", transform.getMatrix());
     shaderProgram.setVec4("color", color);
-    glDrawElements(GL_TRIANGLE_FAN, indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
-}
-
-void Circle::genGeometry() {
-    vertices.resize(2 * (resolution + 1));
-    vertices[0] = 0.0f;
-    vertices[1] = 0.0f;
-    float stride = 2.0f * std::numbers::pi / resolution;
-    for (unsigned int i = 0; i < resolution; i++) {
-        float angle = i * stride;
-        vertices[2 + 2 * i] = cos(angle);
-        vertices[3 + 2 * i] = sin(angle);
-    }
-
-    indices.resize(resolution + 2);
-    for (unsigned int i = 0; i < resolution + 1; i++)
-        indices[i] = i;
-    indices[resolution + 1] = 1;
-
-    vertexArray.bind();
-
-    vertexBuffer.bind();
-    vertexBuffer.setData(vertices, GL_STATIC_DRAW);
-
-    indexBuffer.bind();
-    indexBuffer.setData(indices, GL_STATIC_DRAW);
-    
-    vertexArray.enableAttribute(0);
-    vertexArray.setAttributePointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), 0);
-
-    vertexArray.unbind();
+    glDrawElements(GL_TRIANGLE_FAN, geometryPtr->indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
 }

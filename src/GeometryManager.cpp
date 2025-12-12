@@ -45,6 +45,49 @@ std::shared_ptr<Geometry> GeometryManager::getRect() {
     return ptr;
 }
 
+std::shared_ptr<Geometry> GeometryManager::getCircle(unsigned int resolution) {
+    size_t key = std::hash<std::string>()("circle_" + resolution);
+
+    std::shared_ptr<Geometry> ptr = loadOrGet(key, [&]() {
+        std::shared_ptr<Geometry> geometryPtr = std::make_shared<Geometry>();
+        
+        std::vector<float> vertices(2 * (resolution + 1));
+        vertices[0] = 0.0f;
+        vertices[1] = 0.0f;
+        float stride = 2.0f * std::numbers::pi / resolution;
+        for (unsigned int i = 0; i < resolution; i++) {
+            float angle = i * stride;
+            vertices[2 + 2 * i] = cos(angle);
+            vertices[3 + 2 * i] = sin(angle);
+        }
+
+        std::vector<unsigned int> indices(resolution + 2);
+        for (unsigned int i = 0; i < resolution + 1; i++)
+            indices[i] = i;
+        indices[resolution + 1] = 1;
+
+        geometryPtr->vertexArray.gen();
+        geometryPtr->vertexArray.bind();
+
+        geometryPtr->vertexBuffer.gen();
+        geometryPtr->vertexBuffer.bind();
+        geometryPtr->vertexBuffer.setData(vertices, GL_STATIC_DRAW);
+
+        geometryPtr->indexBuffer.gen();
+        geometryPtr->indexBuffer.bind();
+        geometryPtr->indexBuffer.setData(indices, GL_STATIC_DRAW);
+    
+        geometryPtr->vertexArray.enableAttribute(0);
+        geometryPtr->vertexArray.setAttributePointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), 0);
+
+        geometryPtr->vertexArray.unbind();
+
+        return geometryPtr;
+    });
+
+    return ptr;
+}
+
 GeometryManager::GeometryManager() {}
 
 std::shared_ptr<Geometry> GeometryManager::loadOrGet(size_t key, std::function<std::shared_ptr<Geometry>()> generator) {

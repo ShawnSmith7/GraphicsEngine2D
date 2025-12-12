@@ -1,8 +1,7 @@
 #pragma once
 
 #include "Drawable.h"
-
-#include <numbers>
+#include "GeometryManager.h"
 
 class Circle : public Drawable {
     public:
@@ -28,17 +27,9 @@ class Circle : public Drawable {
         void setOrigin(const glm::vec2& origin);
 
         void draw(const ShaderProgram& shaderProgram) override;
-    protected:    
-        VertexArray vertexArray;
-        VertexBuffer vertexBuffer;
-    
+    protected:
         glm::vec4 color;
         unsigned int resolution;
 
-        std::vector<float> vertices;
-    private:
-        IndexBuffer indexBuffer;
-        std::vector<unsigned int> indices;
-
-        void genGeometry();
+        std::shared_ptr<Geometry> geometryPtr;
 };

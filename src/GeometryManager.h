@@ -4,6 +4,8 @@
 #include <unordered_map>
 #include <functional>
 #include <string>
+#include <numbers>
+#include <cmath>
 
 #include "VertexArray.h"
 #include "VertexBuffer.h"
@@ -22,6 +24,7 @@ class GeometryManager {
         static GeometryManager& get();
 
         std::shared_ptr<Geometry> getRect();
+        std::shared_ptr<Geometry> getCircle(unsigned int resolution);
     private:
         GeometryManager();
 
