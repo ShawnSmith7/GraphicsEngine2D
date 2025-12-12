@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Drawable.h"
-#include "GeometryManager.h"
 
 class Rect : public Drawable {
     public:
@@ -37,6 +36,4 @@ class Rect : public Drawable {
         static const unsigned int indices[6];
 
         void genGeometry() const;
-
-        std::shared_ptr<Geometry> geometryPtr;
 };
