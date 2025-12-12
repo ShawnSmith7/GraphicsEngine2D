@@ -1,6 +1,9 @@
 #pragma once
 
 #include <memory>
+#include <unordered_map>
+#include <functional>
+#include <string>
 
 #include "VertexArray.h"
 #include "VertexBuffer.h"
@@ -20,4 +23,8 @@ class GeometryManager {
         std::shared_ptr<Geometry> getRect();
     private:
         GeometryManager();
+
+        std::unordered_map<size_t, std::shared_ptr<Geometry>> cache;
+
+        std::shared_ptr<Geometry> loadOrGet(size_t key, std::function<std::shared_ptr<Geometry>()> generator);
 };
