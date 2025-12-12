@@ -24,7 +24,15 @@ std::shared_ptr<Geometry> GeometryManager::getRect() {
         geometryPtr->vertexBuffer.gen();
         geometryPtr->vertexBuffer.bind();
         geometryPtr->vertexBuffer.setData(vertices, GL_STATIC_DRAW);
-        geometryPtr->vertexCount = 4;
+
+        const unsigned int indices[] = {
+            0, 1, 2,
+            2, 3, 0
+        };
+
+        geometryPtr->indexBuffer.gen();
+        geometryPtr->indexBuffer.bind();
+        geometryPtr->indexBuffer.setData(indices, GL_STATIC_DRAW);
 
         geometryPtr->vertexArray.enableAttribute(0);
         geometryPtr->vertexArray.setAttributePointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), 0);

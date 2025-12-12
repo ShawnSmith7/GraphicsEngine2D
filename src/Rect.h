@@ -27,13 +27,7 @@ class Rect : public Drawable {
 
         void draw(const ShaderProgram& shaderProgram) override;
     private:
-        static IndexBuffer indexBuffer;
-    
         glm::vec4 color;
-
-        static const unsigned int indices[6];
-
-        //void genGeometry() const;
 
         std::shared_ptr<Geometry> geometryPtr;
 };

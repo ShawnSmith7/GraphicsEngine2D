@@ -7,11 +7,12 @@
 
 #include "VertexArray.h"
 #include "VertexBuffer.h"
+#include "IndexBuffer.h"
 
 struct Geometry {
     VertexArray vertexArray;
     VertexBuffer vertexBuffer;
-    unsigned int vertexCount;
+    IndexBuffer indexBuffer;
 };
 
 class GeometryManager {
