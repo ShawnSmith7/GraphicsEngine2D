@@ -20,5 +20,5 @@ class SemiCircle : public Circle {
     private:
         float arc;
 
-        void genGeometry();
+        std::shared_ptr<Geometry> geometryPtr;
 };

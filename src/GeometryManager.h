@@ -14,6 +14,9 @@
 struct Geometry {
     VertexArray vertexArray;
     VertexBuffer vertexBuffer;
+};
+
+struct IndexedGeometry : public Geometry {
     IndexBuffer indexBuffer;
 };
 
@@ -23,12 +26,14 @@ class GeometryManager {
 
         static GeometryManager& get();
 
-        std::shared_ptr<Geometry> getRect();
-        std::shared_ptr<Geometry> getCircle(unsigned int resolution);
+        std::shared_ptr<IndexedGeometry> getRect();
+        std::shared_ptr<IndexedGeometry> getCircle(unsigned int resolution);
+        std::shared_ptr<Geometry> getSemiCircle(unsigned int resolution, float arc);
     private:
         GeometryManager();
 
         std::unordered_map<size_t, std::shared_ptr<Geometry>> cache;
 
-        std::shared_ptr<Geometry> loadOrGet(size_t key, std::function<std::shared_ptr<Geometry>()> generator);
+        template<typename T>
+        std::shared_ptr<T> loadOrGet(size_t key, std::function<std::shared_ptr<T>()> generator);
 };

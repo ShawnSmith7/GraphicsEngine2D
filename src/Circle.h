@@ -30,6 +30,6 @@ class Circle : public Drawable {
     protected:
         glm::vec4 color;
         unsigned int resolution;
-
-        std::shared_ptr<Geometry> geometryPtr;
+    private:
+        std::shared_ptr<IndexedGeometry> geometryPtr;
 };

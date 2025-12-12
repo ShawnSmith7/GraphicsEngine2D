@@ -6,8 +6,6 @@ Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsig
     setRadius(radius);
     setRotation(rotation);
     setOrigin(origin);
-
-    geometryPtr = GeometryManager::get().getCircle(resolution);
 }
 
 glm::vec2 Circle::getPos() const {
@@ -60,6 +58,8 @@ void Circle::setOrigin(const glm::vec2& origin) {
 }
 
 void Circle::draw(const ShaderProgram& shaderProgram) {
+    if (geometryPtr == nullptr)
+        geometryPtr = GeometryManager::get().getCircle(resolution);
     geometryPtr->vertexArray.bind();
     shaderProgram.setMat4("model", transform.getMatrix());
     shaderProgram.setVec4("color", color);

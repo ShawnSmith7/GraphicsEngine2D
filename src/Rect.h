@@ -29,5 +29,5 @@ class Rect : public Drawable {
     private:
         glm::vec4 color;
 
-        std::shared_ptr<Geometry> geometryPtr;
+        std::shared_ptr<IndexedGeometry> geometryPtr;
 };
