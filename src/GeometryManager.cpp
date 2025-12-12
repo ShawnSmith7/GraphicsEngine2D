@@ -122,6 +122,35 @@ std::shared_ptr<Geometry> GeometryManager::getSemiCircle(unsigned int resolution
     return ptr;
 }
 
+std::shared_ptr<Geometry> GeometryManager::getLine() {
+    size_t key = std::hash<std::string>()("line");
+
+    std::shared_ptr<Geometry> ptr = loadOrGet<Geometry>(key, []() {
+        std::shared_ptr<Geometry> geometryPtr = std::make_shared<Geometry>();
+
+        geometryPtr->vertexArray.gen();
+        geometryPtr->vertexArray.bind();
+
+        const float vertices[] = {
+            0.0f, 0.0f,
+            1.0f, 0.0f
+        };
+
+        geometryPtr->vertexBuffer.gen();
+        geometryPtr->vertexBuffer.bind();
+        geometryPtr->vertexBuffer.setData(vertices, GL_STATIC_DRAW);
+
+        geometryPtr->vertexArray.enableAttribute(0);
+        geometryPtr->vertexArray.setAttributePointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), 0);
+
+        geometryPtr->vertexArray.unbind();
+
+        return geometryPtr;
+    });
+
+    return ptr;
+}
+
 GeometryManager::GeometryManager() {}
 
 template<typename T>

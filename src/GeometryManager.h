@@ -29,6 +29,7 @@ class GeometryManager {
         std::shared_ptr<IndexedGeometry> getRect();
         std::shared_ptr<IndexedGeometry> getCircle(unsigned int resolution);
         std::shared_ptr<Geometry> getSemiCircle(unsigned int resolution, float arc);
+        std::shared_ptr<Geometry> getLine();
     private:
         GeometryManager();
 

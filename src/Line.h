@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Drawable.h"
+#include "GeometryManager.h"
 
 class Line : public Drawable {
     public:
@@ -32,10 +33,5 @@ class Line : public Drawable {
 
         static glm::vec2 findPos2(const glm::vec2& pos1, float length, float rotation);
     private:
-        static VertexArray vertexArray;
-        static VertexBuffer vertexBuffer;
-
-        static const float vertices[4];
-
-        void genGeometry() const;
+        std::shared_ptr<Geometry> geometryPtr;
 };

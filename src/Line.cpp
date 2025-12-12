@@ -69,7 +69,9 @@ void Line::setRotation(float rotation) {
 }
 
 void Line::draw(const ShaderProgram& shaderProgram) {
-    vertexArray.bind();
+    if (geometryPtr == nullptr)
+        geometryPtr = GeometryManager::get().getLine();
+    geometryPtr->vertexArray.bind();
     shaderProgram.setMat4("model", transform.getMatrix());
     shaderProgram.setVec4("color", color);
     glLineWidth(getWidth());
@@ -79,27 +81,4 @@ void Line::draw(const ShaderProgram& shaderProgram) {
 
 glm::vec2 Line::findPos2(const glm::vec2& pos1, float length, float rotation) {
     return pos1 + length * glm::vec2(cos(rotation), sin(rotation));
-}
-
-VertexArray Line::vertexArray;
-VertexBuffer Line::vertexBuffer;
-
-const float Line::vertices[] = { 0.0f, 0.0f, 1.0f, 0.0f };
-
-void Line::genGeometry() const {
-    static bool initialized = false;
-    if (!initialized) {
-        initialized = true;
-        vertexArray.gen();
-        vertexArray.bind();
-
-        vertexBuffer.gen();
-        vertexBuffer.bind();
-        vertexBuffer.setData(vertices, GL_STATIC_DRAW);
-
-        vertexArray.enableAttribute(0);
-        vertexArray.setAttributePointer(0, 2, GL_FLOAT, false, 2 * sizeof(float), 0);
-
-        vertexArray.unbind();
-    }
 }
