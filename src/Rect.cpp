@@ -6,6 +6,8 @@ Rect::Rect(const glm::vec2& pos, const glm::vec2& size, const glm::vec4& color, 
     setSize(size);
     setRotation(rotation);
     setOrigin(origin);
+
+    geometryPtr = GeometryManager::get().getRect();
 }
 
 Rect::Rect(const Transform& transform, const glm::vec4& color) :
@@ -54,10 +56,11 @@ void Rect::setOrigin(const glm::vec2& origin) {
 }
 
 void Rect::draw(const ShaderProgram& shaderProgram) {
-    vertexArray.bind();
+    geometryPtr->vertexArray.bind();
     shaderProgram.setMat4("model", transform.getMatrix());
     shaderProgram.setVec4("color", color);
-    glDrawElements(GL_TRIANGLES, indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
+    glDrawArrays(GL_TRIANGLES, 0, geometryPtr->vertexCount);
+    //glDrawElements(GL_TRIANGLES, indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
 }
 
 VertexArray Rect::vertexArray;
