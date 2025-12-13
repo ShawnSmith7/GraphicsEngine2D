@@ -1,5 +1,6 @@
 #include "Window.h"
 #include "RoundThickLine.h"
+#include "Polyline.h"
 
 void processInput(GLFWwindow* window);
 
@@ -17,10 +18,18 @@ int main() {
     ThickLine thickLine(glm::vec2(220.0f, 433.3f), glm::vec2(420.0f, 633.3f), 20.0f, coolColor);
     RoundThickLine roundThickLine(glm::vec2(540.0f, 433.3f), glm::vec2(740.0f, 633.3f), 20.0f, coolColor, 16, 16);
     SemiCircle semiCircle(glm::vec2(980.0f, 533.3f), 100.0f, coolColor, std::numbers::pi, 32);
+    Polyline polyline({{100.0f, 100.0f}, {200.0f, 50.0f}, {300.0f, 100.0f}}, 1, coolColor);
 
-    std::vector<Drawable*> drawables = { &rect, &circle, &line, &thickLine, &roundThickLine, &semiCircle };
+    std::vector<Drawable*> drawables = {
+        &rect,
+        &circle, 
+        &line,
+        &thickLine,
+        &roundThickLine,
+        &semiCircle,
+        &polyline };
 
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 

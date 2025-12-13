@@ -1,9 +1,6 @@
 #pragma once
 
 #include "ShaderProgram.h"
-#include "VertexArray.h"
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
 #include "Transform.h"
 
 class Drawable {
