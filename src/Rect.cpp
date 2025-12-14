@@ -61,3 +61,12 @@ void Rect::draw(const ShaderProgram& shaderProgram) {
     shaderProgram.setVec4("color", color);
     glDrawElements(GL_TRIANGLES, geometryPtr->indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
 }
+
+std::ostream& operator<<(std::ostream& os, const Rect& rect) {
+    return os
+        << "{ pos = " << glm::to_string(rect.getPos())
+        << ", size = " << glm::to_string(rect.getSize())
+        << ", color = " << glm::to_string(rect.getColor())
+        << ", rotation = " << rect.getRotation()
+        << ", origin = " << glm::to_string(rect.getOrigin()) << " }";
+}

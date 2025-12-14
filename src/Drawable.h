@@ -1,5 +1,7 @@
 #pragma once
 
+#include <ostream>
+
 #include "ShaderProgram.h"
 #include "Transform.h"
 
@@ -11,5 +13,6 @@ class Drawable {
         void setTransform(const Transform& transform);
     protected:
         Transform transform;
-
 };
+
+std::ostream& operator<<(std::ostream& os, const Drawable& drawable);

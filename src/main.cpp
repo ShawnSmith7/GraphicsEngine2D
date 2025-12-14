@@ -22,6 +22,8 @@ int main() {
     Polyline polyline({{100.0f, 100.0f}, {200.0f, 50.0f}, {300.0f, 100.0f}}, 20, coolColor);
     ThickPolyline thickPolyline({{500.0f, 50.0f}, {600.0f, 100.0f}, {700.0f, 50.0f}}, 20, coolColor);
 
+    std::cout << rect;
+
     std::vector<Drawable*> drawables = {
         &rect,
         &circle, 

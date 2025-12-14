@@ -31,3 +31,5 @@ class Rect : public Drawable {
 
         std::shared_ptr<IndexedGeometry> geometryPtr;
 };
+
+std::ostream& operator<<(std::ostream& os, const Rect& rect);

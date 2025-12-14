@@ -9,6 +9,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <ostream>
 
 #ifndef SRC_DIR
 #define SRC_DIR "./"
@@ -28,4 +29,8 @@ class ShaderProgram {
 
         static std::string fileNameToString(const std::string& fileName);
         static unsigned int compileShader(const char* fileName, GLenum type);
+
+        friend std::ostream& operator<<(std::ostream& os, const ShaderProgram& shaderProgram);
 };
+
+std::ostream& operator<<(std::ostream& os, const ShaderProgram& shaderProgram);

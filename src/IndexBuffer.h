@@ -25,3 +25,5 @@ class IndexBuffer : public Buffer {
     private:
         size_t count = 0;
 };
+
+std::ostream& operator<<(std::ostream& os, const IndexBuffer& indexBuffer);

@@ -39,6 +39,10 @@ int Window::getHeight() const {
     return height;
 }
 
+const char* Window::getTitle() const {
+    return title;
+}
+
 void Window::render(const std::function<void()>& renderCallback) const {
     while(!glfwWindowShouldClose(window)) {
         renderCallback();
@@ -53,3 +57,7 @@ GLFWframebuffersizefun Window::framebufferSizeCallback = [](GLFWwindow* window, 
     windowPtr->height = height;
     glViewport(0, 0, width, height);
 };
+
+std::ostream& operator<<(std::ostream& os, const Window& window) {
+    return os << "{ width = " << window.getWidth() << ", height = " << window.getHeight() << ", title = " << window.getTitle() << " }";
+}

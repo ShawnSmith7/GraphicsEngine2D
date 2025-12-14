@@ -3,6 +3,7 @@
 #include <glad/glad.h>
 
 #include <vector>
+#include <ostream>
 
 class Buffer {
     public:
@@ -25,4 +26,8 @@ class Buffer {
         }
     protected:
         unsigned int ID;
+
+        friend std::ostream& operator<<(std::ostream& os, const Buffer& buffer);
 };
+
+std::ostream& operator<<(std::ostream& os, const Buffer& buffer);

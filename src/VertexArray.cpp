@@ -26,3 +26,7 @@ void VertexArray::enableAttribute(unsigned int index) {
 void VertexArray::setAttributePointer(unsigned int index, int size, GLenum type, bool normalized, size_t stride, size_t offset) {
     glVertexAttribPointer(index, size, type, normalized, stride, (void*)offset);
 }
+
+std::ostream& operator<<(std::ostream& os, const VertexArray& vertexArray) {
+    return os << "{ ID = " << vertexArray.ID << " }";
+}

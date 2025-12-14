@@ -18,3 +18,7 @@ void Buffer::bind(GLenum target) const {
 void Buffer::unbind(GLenum target) {
     glBindBuffer(target, 0);
 }
+
+std::ostream& operator<<(std::ostream& os, const Buffer& buffer) {
+    return os << "{ ID = " << buffer.ID << " }";
+}

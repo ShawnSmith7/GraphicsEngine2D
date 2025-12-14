@@ -5,6 +5,7 @@
 
 #include <stdexcept>
 #include <functional>
+#include <ostream>
 
 class Window {
     public:
@@ -14,6 +15,7 @@ class Window {
         GLFWwindow* get() const;
         int getWidth() const;
         int getHeight() const;
+        const char* getTitle() const;
 
         void render(const std::function<void()>& renderCallback) const;
     private:
@@ -23,3 +25,5 @@ class Window {
 
         static GLFWframebuffersizefun framebufferSizeCallback;
 };
+
+std::ostream& operator<<(std::ostream& os, const Window& window);

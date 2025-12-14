@@ -57,3 +57,13 @@ void Transform::updateMatrix() {
     matrix = m;
     dirty = false;
 }
+
+std::ostream& operator<<(std::ostream& os, const Transform& transform) {
+    return os 
+        << "{ translation = " << glm::to_string(transform.getTranslation()) 
+        << ", scaling = " << glm::to_string(transform.getScaling())
+        << ", rotation = " << transform.getRotation()
+        << ", origin = " << glm::to_string(transform.getOrigin())
+        << ", matrix = " << glm::to_string(transform.matrix)
+        << ", dirty = " << transform.dirty << " }";
+}

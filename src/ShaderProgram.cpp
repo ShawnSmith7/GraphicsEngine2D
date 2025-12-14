@@ -78,3 +78,7 @@ unsigned int ShaderProgram::compileShader(const char* fileName, GLenum type) {
 
     return shader;
 }
+
+std::ostream& operator<<(std::ostream& os, const ShaderProgram& shaderProgram) {
+    return os << "{ ID = " << shaderProgram.ID << " }";
+}

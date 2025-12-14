@@ -1,7 +1,10 @@
 #pragma once
 
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <ostream>
+#include <glm/gtx/string_cast.hpp>
 
 class Transform {
     public:
@@ -26,4 +29,8 @@ class Transform {
         bool dirty;
 
         void updateMatrix();
+
+        friend std::ostream& operator<<(std::ostream& os, const Transform& transform);
 };
+
+std::ostream& operator<<(std::ostream& os, const Transform& transform);
