@@ -1,10 +1,7 @@
 #include "Polyline.h"
 
 Polyline::Polyline(const std::vector<glm::vec2>& points, float width, const glm::vec4& color) :
-    points(points), width(width), color(color), dirty(true) {
-    vertexArray.gen();
-    vertexBuffer.gen();
-}
+    points(points), width(width), color(color), initialized(false), dirty(true) {}
 
 std::vector<glm::vec2> Polyline::getPoints() const {
     return points;
@@ -77,6 +74,8 @@ void Polyline::removePoint(size_t i) {
 }
 
 void Polyline::draw(const ShaderProgram& shaderProgram) {
+    if (!initialized)
+        initializeGeometry();
     if (dirty)
         updateGeometry();
     vertexArray.bind();
@@ -105,4 +104,11 @@ void Polyline::updateGeometry() {
     vertexArray.unbind();
     
     dirty = false;
+}
+
+void Polyline::initializeGeometry() {
+    vertexArray.gen();
+    vertexBuffer.gen();
+
+    initialized = true;
 }

@@ -27,6 +27,7 @@ add_library(GraphicsEngine2DLib
     src/VertexBuffer.cpp
     src/IndexBuffer.cpp
     src/Transform.cpp
+    src/Drawable.cpp
     src/GeometryManager.cpp
     src/Rect.cpp
     src/Circle.cpp
@@ -35,6 +36,7 @@ add_library(GraphicsEngine2DLib
     src/ThickLine.cpp
     src/RoundThickLine.cpp
     src/Polyline.cpp
+    src/ThickPolyline.cpp
 )
 target_link_libraries(GraphicsEngine2DLib PUBLIC opengl32 glad glfw glm)
 

@@ -1,6 +1,6 @@
 #include "Window.h"
 #include "RoundThickLine.h"
-#include "Polyline.h"
+#include "ThickPolyline.h"
 
 void processInput(GLFWwindow* window);
 
@@ -16,9 +16,11 @@ int main() {
     Circle circle(glm::vec2(640.0f, 266.7f), 100.0f, coolColor);
     Line line(glm::vec2(880.0f, 166.7f), glm::vec2(1080.0f, 366.7f), 20.0f, coolColor);
     ThickLine thickLine(glm::vec2(220.0f, 433.3f), glm::vec2(420.0f, 633.3f), 20.0f, coolColor);
+    thickLine.setPos1({0.0f, 0.0f});
     RoundThickLine roundThickLine(glm::vec2(540.0f, 433.3f), glm::vec2(740.0f, 633.3f), 20.0f, coolColor, 16, 16);
     SemiCircle semiCircle(glm::vec2(980.0f, 533.3f), 100.0f, coolColor, std::numbers::pi, 32);
-    Polyline polyline({{100.0f, 100.0f}, {200.0f, 50.0f}, {300.0f, 100.0f}}, 1, coolColor);
+    Polyline polyline({{100.0f, 100.0f}, {200.0f, 50.0f}, {300.0f, 100.0f}}, 20, coolColor);
+    ThickPolyline thickPolyline({{500.0f, 50.0f}, {600.0f, 100.0f}, {700.0f, 50.0f}}, 20, coolColor);
 
     std::vector<Drawable*> drawables = {
         &rect,
@@ -27,7 +29,8 @@ int main() {
         &thickLine,
         &roundThickLine,
         &semiCircle,
-        &polyline };
+        &polyline,
+        &thickPolyline };
 
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     

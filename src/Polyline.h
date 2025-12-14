@@ -33,14 +33,15 @@ class Polyline : public Drawable {
         void removePoint(size_t i);
 
         void draw(const ShaderProgram& shaderProgram) override;
-    private:
+    protected:
         std::vector<glm::vec2> points;
         float width;
         glm::vec4 color;
-
+    private:
         VertexArray vertexArray;
         VertexBuffer vertexBuffer;
         
-        bool dirty;
+        bool initialized, dirty;
         void updateGeometry();
+        void initializeGeometry();
 };
