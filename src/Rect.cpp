@@ -1,4 +1,7 @@
+#include "pch.h"
 #include "Rect.h"
+
+#include "GeometryManager.h"
 
 Rect::Rect(const glm::vec2& pos, const glm::vec2& size, const glm::vec4& color, float rotation, const glm::vec2& origin) :
     color(color) {

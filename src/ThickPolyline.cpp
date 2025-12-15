@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "ThickPolyline.h"
 
 ThickPolyline::ThickPolyline(const std::vector<glm::vec2>& points, float width, const glm::vec4& color) :

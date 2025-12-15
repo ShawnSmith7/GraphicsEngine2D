@@ -1,7 +1,17 @@
 #pragma once
 
 #include "Drawable.h"
-#include "GeometryManager.h"
+
+#include <glm/vec2.hpp>
+#include <glm/vec4.hpp>
+
+#include <memory>
+#include <iosfwd>
+
+#include "Geometry.h"
+
+class ShaderProgram;
+class Transform;
 
 class Rect : public Drawable {
     public:

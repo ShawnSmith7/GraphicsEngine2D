@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Transform.h"
 
 Transform::Transform(const glm::vec2& translation, const glm::vec2& scaling, float rotation, const glm::vec2& origin) :

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <ostream>
+#include <iosfwd>
 
 #include "ShaderProgram.h"
 #include "Transform.h"

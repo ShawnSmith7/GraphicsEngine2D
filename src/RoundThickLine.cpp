@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "RoundThickLine.h"
 
 RoundThickLine::RoundThickLine(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color, float resolution0, float resolution1) :

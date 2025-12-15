@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "ThickLine.h"
 
 ThickLine::ThickLine(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color) :

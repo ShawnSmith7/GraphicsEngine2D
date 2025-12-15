@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "GeometryManager.h"
 
 GeometryManager& GeometryManager::get() {
@@ -46,7 +47,7 @@ std::shared_ptr<IndexedGeometry> GeometryManager::getRect() {
 }
 
 std::shared_ptr<IndexedGeometry> GeometryManager::getCircle(unsigned int resolution) {
-    size_t key = std::hash<std::string>()("circle_" + resolution);
+    size_t key = std::hash<std::string>()("circle_" + std::to_string(resolution));
 
     std::shared_ptr<IndexedGeometry> ptr = loadOrGet<IndexedGeometry>(key, [&]() {
         std::shared_ptr<IndexedGeometry> geometryPtr = std::make_shared<IndexedGeometry>();
@@ -89,7 +90,7 @@ std::shared_ptr<IndexedGeometry> GeometryManager::getCircle(unsigned int resolut
 }
 
 std::shared_ptr<Geometry> GeometryManager::getSemiCircle(unsigned int resolution, float arc) {
-    size_t key = std::hash<std::string>()("semiCircle_" + resolution + '_' + std::to_string(arc));
+    size_t key = std::hash<std::string>()("semiCircle_" + std::to_string(resolution) + "_" + std::to_string(arc));
     
     std::shared_ptr<Geometry> ptr = loadOrGet<Geometry>(key, [&]() {
         std::shared_ptr<Geometry> geometryPtr = std::make_shared<Geometry>();
@@ -152,14 +153,3 @@ std::shared_ptr<Geometry> GeometryManager::getLine() {
 }
 
 GeometryManager::GeometryManager() {}
-
-template<typename T>
-std::shared_ptr<T> GeometryManager::loadOrGet(size_t key, std::function<std::shared_ptr<T>()> generator) {
-    auto iterator = cache.find(key);
-    if (iterator != cache.end())
-        return std::static_pointer_cast<T>(iterator->second);
-
-    std::shared_ptr<T> geometryPtr = generator();
-    cache[key] = geometryPtr;
-    return geometryPtr;
-}

@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Circle.h"
 
 Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsigned int resolution, float rotation, const glm::vec2& origin) :
