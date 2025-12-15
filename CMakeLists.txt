@@ -20,6 +20,7 @@ FetchContent_Declare(glm
 FetchContent_MakeAvailable(glfw glm)
 
 add_library(GraphicsEngine2DLib
+    src/pch.cpp
     src/Window.cpp
     src/ShaderProgram.cpp
     src/VertexArray.cpp

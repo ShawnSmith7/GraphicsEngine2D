@@ -2,6 +2,11 @@
 
 #include "Buffer.h"
 
+#include <vector>
+#include <cstddef>
+
+#include <glad/glad.h>
+
 class IndexBuffer : public Buffer {
     public:
         using Buffer::Buffer;

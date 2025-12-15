@@ -1,11 +1,11 @@
 #pragma once
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-#include <stdexcept>
 #include <functional>
-#include <ostream>
+
+struct GLFWwindow;
+using GLFWframebuffersizefun = void(*)(GLFWwindow*, int, int);
+
+#include <iosfwd>
 
 class Window {
     public:

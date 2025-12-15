@@ -1,7 +1,9 @@
 #pragma once
 
-#include <glad/glad.h>
-#include <ostream>
+#include <iosfwd>
+#include <cstddef>
+
+using GLenum = unsigned int;
 
 class VertexArray {
     public:

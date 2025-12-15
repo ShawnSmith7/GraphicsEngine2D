@@ -1,19 +1,12 @@
 #pragma once
 
-#include <glad/glad.h>
-
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
-#include <iostream>
 #include <string>
-#include <fstream>
-#include <sstream>
-#include <ostream>
+#include <iosfwd>
 
-#ifndef SRC_DIR
-#define SRC_DIR "./"
-#endif
+#include <glm/vec4.hpp>
+#include <glm/mat4x4.hpp>
+
+#include <glad/glad.h>
 
 class ShaderProgram {
     public:

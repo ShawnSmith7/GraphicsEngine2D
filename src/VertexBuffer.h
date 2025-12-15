@@ -2,10 +2,13 @@
 
 #include "Buffer.h"
 
+#include <vector>
+#include <cstddef>
+
+#include <glad/glad.h>
+
 class VertexBuffer : public Buffer {
     public:
-        using Buffer::Buffer;
-
         void bind() const;
         static void unbind();
 

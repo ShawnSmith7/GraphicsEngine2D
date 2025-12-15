@@ -1,9 +1,10 @@
 #pragma once
 
-#include <glad/glad.h>
-
 #include <vector>
-#include <ostream>
+#include <iosfwd>
+#include <cstddef>
+
+#include <glad/glad.h>
 
 class Buffer {
     public:

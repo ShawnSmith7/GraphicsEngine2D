@@ -1,3 +1,9 @@
+#include "pch.h"
+
+#ifndef SRC_DIR
+#define SRC_DIR "./"
+#endif
+
 #include "ShaderProgram.h"
 
 ShaderProgram::ShaderProgram(const char* vertexShaderFileName, const char* fragmentShaderFileName) :
