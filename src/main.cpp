@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "RoundThickLine.h"
 #include "ThickPolyline.h"
+#include "ShaderProgram.h"
 
 void processInput(GLFWwindow* window);
 

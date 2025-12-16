@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "SemiCircle.h"
 
+#include "GeometryManager.h"
+#include "ShaderProgram.h"
+
 SemiCircle::SemiCircle(const glm::vec2& pos, float radius, const glm::vec4& color, float arc, unsigned int resolution, float rotation, const glm::vec2& origin) :
     Circle(pos, radius, color, resolution, rotation, origin), arc(arc) {}
 

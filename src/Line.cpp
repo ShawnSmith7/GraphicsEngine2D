@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "Line.h"
 
+#include "GeometryManager.h"
+#include "ShaderProgram.h"
+
 Line::Line(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color) :
     pos2(pos2), color(color) {
     setPos1(pos1);

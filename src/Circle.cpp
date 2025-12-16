@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "Circle.h"
 
+#include "GeometryManager.h"
+#include "ShaderProgram.h"
+
 Circle::Circle(const glm::vec2& pos, float radius, const glm::vec4& color, unsigned int resolution, float rotation, const glm::vec2& origin) :
     color(color), resolution(resolution) {
     setPos(pos);

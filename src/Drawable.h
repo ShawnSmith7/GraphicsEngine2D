@@ -2,8 +2,9 @@
 
 #include <iosfwd>
 
-#include "ShaderProgram.h"
 #include "Transform.h"
+
+class ShaderProgram;
 
 class Drawable {
     public:

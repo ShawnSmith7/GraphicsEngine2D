@@ -3,6 +3,11 @@
 #include "ThickLine.h"
 #include "SemiCircle.h"
 
+#include <glm/vec2.hpp>
+#include <glm/vec4.hpp>
+
+class ShaderProgram;
+
 class RoundThickLine : public ThickLine {
     public:
         RoundThickLine(const glm::vec2& pos1 = glm::vec2(0.0f),

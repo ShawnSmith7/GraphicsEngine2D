@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Drawable.h"
 
+#include "ShaderProgram.h"
+
 Transform Drawable::getTransform() const {
     return transform;
 }

@@ -1,10 +1,15 @@
 #pragma once
 
-#include <vector>
-
 #include "Drawable.h"
+
+#include <vector>
+#include <glm/vec2.hpp>
+#include <glm/vec4.hpp>
+
 #include "VertexArray.h"
 #include "VertexBuffer.h"
+
+class ShaderProgram;
 
 class Polyline : public Drawable {
     public:

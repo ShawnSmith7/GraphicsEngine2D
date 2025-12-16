@@ -1,7 +1,13 @@
 #pragma once
 
 #include "Drawable.h"
-#include "GeometryManager.h"
+
+#include <glm/vec2.hpp>
+#include <glm/vec4.hpp>
+#include <memory>
+#include "Geometry.h"
+
+class ShaderProgram;
 
 class Line : public Drawable {
     public:

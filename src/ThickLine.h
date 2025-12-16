@@ -3,6 +3,11 @@
 #include "Line.h"
 #include "Rect.h"
 
+#include <glm/vec2.hpp>
+#include <glm/vec4.hpp>
+
+class ShaderProgram;
+
 class ThickLine : public Line {
     public:
         ThickLine(const glm::vec2& pos1 = glm::vec2(0.0f),

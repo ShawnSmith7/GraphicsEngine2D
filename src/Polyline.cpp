@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Polyline.h"
 
+#include "ShaderProgram.h"
+
 Polyline::Polyline(const std::vector<glm::vec2>& points, float width, const glm::vec4& color) :
     points(points), width(width), color(color), initialized(false), dirty(true) {}
 

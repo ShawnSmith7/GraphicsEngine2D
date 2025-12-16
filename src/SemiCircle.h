@@ -2,6 +2,13 @@
 
 #include "Circle.h"
 
+#include <glm/vec2.hpp>
+#include <glm/vec4.hpp>
+#include <numbers>
+#include <memory>
+
+class ShaderProgram;
+
 class SemiCircle : public Circle {
     public:
         SemiCircle(const glm::vec2& pos = glm::vec2(0.0f),

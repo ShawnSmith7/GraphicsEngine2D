@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "RoundThickLine.h"
 
+#include "ShaderProgram.h"
+
 RoundThickLine::RoundThickLine(const glm::vec2& pos1, const glm::vec2& pos2, float width, const glm::vec4& color, float resolution0, float resolution1) :
     ThickLine(pos1, pos2, width, color),
     cap0(pos1, width / 2.0f, color, std::numbers::pi, 32, getRotation() + 0.5f * std::numbers::pi),

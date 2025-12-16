@@ -3,6 +3,12 @@
 #include "Polyline.h"
 #include "ThickLine.h"
 
+#include <vector>
+#include <glm/vec2.hpp>
+#include <glm/vec4.hpp>
+
+class ShaderProgram;
+
 class ThickPolyline : public Polyline {
     public:
         ThickPolyline(const std::vector<glm::vec2>& points,
