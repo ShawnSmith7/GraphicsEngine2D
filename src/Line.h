@@ -5,6 +5,8 @@
 #include <glm/vec2.hpp>
 #include <glm/vec4.hpp>
 #include <memory>
+#include <iosfwd>
+
 #include "Geometry.h"
 
 class ShaderProgram;
@@ -41,3 +43,5 @@ class Line : public Drawable {
     private:
         std::shared_ptr<Geometry> geometryPtr;
 };
+
+std::ostream& operator<<(std::ostream& os, const Line& line);

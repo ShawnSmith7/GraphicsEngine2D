@@ -69,3 +69,13 @@ void Circle::draw(const ShaderProgram& shaderProgram) {
     shaderProgram.setVec4("color", color);
     glDrawElements(GL_TRIANGLE_FAN, geometryPtr->indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
 }
+
+std::ostream& operator<<(std::ostream& os, const Circle& circle) {
+    return os
+        << "{ pos = " << glm::to_string(circle.getPos())
+        << ", radius = " << circle.getRadius()
+        << ", color = " << glm::to_string(circle.getColor())
+        << ", resolution = " << circle.getResolution()
+        << ", rotation = " << circle.getRotation()
+        << ", origin = " << glm::to_string(circle.getOrigin()) << " }";
+}

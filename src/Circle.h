@@ -42,3 +42,5 @@ class Circle : public Drawable {
     private:
         std::shared_ptr<IndexedGeometry> geometryPtr;
 };
+
+std::ostream& operator<<(std::ostream& os, const Circle& circle);

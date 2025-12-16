@@ -5,6 +5,7 @@
 #include <vector>
 #include <glm/vec2.hpp>
 #include <glm/vec4.hpp>
+#include <iosfwd>
 
 #include "VertexArray.h"
 #include "VertexBuffer.h"
@@ -49,4 +50,8 @@ class Polyline : public Drawable {
         bool initialized, dirty;
         void updateGeometry();
         void initializeGeometry();
+
+        friend std::ostream& operator<<(std::ostream& os, const Polyline& polyline);
 };
+
+std::ostream& operator<<(std::ostream& os, const Polyline& polyline);

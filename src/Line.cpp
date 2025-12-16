@@ -86,3 +86,13 @@ void Line::draw(const ShaderProgram& shaderProgram) {
 glm::vec2 Line::findPos2(const glm::vec2& pos1, float length, float rotation) {
     return pos1 + length * glm::vec2(cos(rotation), sin(rotation));
 }
+
+std::ostream& operator<<(std::ostream& os, const Line& line) {
+    return os
+        << "{ pos1 = " << glm::to_string(line.getPos1())
+        << ", pos2 = " << glm::to_string(line.getPos2())
+        << ", width = " << line.getWidth()
+        << ", color = " << glm::to_string(line.getColor())
+        << ", length = " << line.getLength()
+        << ", rotation = " << line.getRotation() << " }";
+}

@@ -115,3 +115,18 @@ void Polyline::initializeGeometry() {
 
     initialized = true;
 }
+
+std::ostream& operator<<(std::ostream& os, const Polyline& polyline) {
+    os << "{ points = [ ";
+    for (unsigned int i = 0; i < polyline.getPoints().size(); i++) {
+        os << glm::to_string(polyline.getPoint(i));
+        if (i != polyline.getPoints().size() - 1)
+            os << ", ";
+    }
+    return os
+        << " ], width = " << polyline.getWidth()
+        << ", color = " << glm::to_string(polyline.getColor())
+        << ", transform = " << polyline.getTransform()
+        << ", initialized = " << polyline.initialized
+        << ", dirty = " << polyline.dirty << " }";
+}

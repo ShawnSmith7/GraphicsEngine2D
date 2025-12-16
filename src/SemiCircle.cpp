@@ -24,3 +24,14 @@ void SemiCircle::draw(const ShaderProgram& shaderProgram) {
     shaderProgram.setVec4("color", color);
     glDrawArrays(GL_TRIANGLE_FAN, 0, resolution + 2);
 }
+
+std::ostream& operator<<(std::ostream& os, const SemiCircle& semiCircle) {
+    return os
+        << "{ pos = " << glm::to_string(semiCircle.getPos())
+        << ", radius = " << semiCircle.getRadius()
+        << ", color = " << glm::to_string(semiCircle.getColor())
+        << ", arc = " << semiCircle.getArc()
+        << ", resolution = " << semiCircle.getResolution()
+        << ", rotation = " << semiCircle.getRotation()
+        << ", origin = " << glm::to_string(semiCircle.getOrigin()) << " }";
+}

@@ -6,6 +6,7 @@
 #include <glm/vec4.hpp>
 #include <numbers>
 #include <memory>
+#include <iosfwd>
 
 class ShaderProgram;
 
@@ -29,3 +30,5 @@ class SemiCircle : public Circle {
 
         std::shared_ptr<Geometry> geometryPtr;
 };
+
+std::ostream& operator<<(std::ostream& os, const SemiCircle& semiCircle);
