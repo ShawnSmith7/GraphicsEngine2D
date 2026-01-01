@@ -72,10 +72,10 @@ void Circle::draw(const ShaderProgram& shaderProgram) {
 
 std::ostream& operator<<(std::ostream& os, const Circle& circle) {
     return os
-        << "{ pos = " << glm::to_string(circle.getPos())
-        << ", radius = " << circle.getRadius()
-        << ", color = " << glm::to_string(circle.getColor())
-        << ", resolution = " << circle.getResolution()
-        << ", rotation = " << circle.getRotation()
-        << ", origin = " << glm::to_string(circle.getOrigin()) << " }";
+        << "{ pos = " << glm::to_string(circle.getPos()) << ",\n"
+        << "radius = " << circle.getRadius() << ",\n"
+        << "color = " << glm::to_string(circle.getColor()) << ",\n"
+        << "resolution = " << circle.getResolution() << ",\n"
+        << "rotation = " << circle.getRotation() << ",\n"
+        << "origin = " << glm::to_string(circle.getOrigin()) << " }";
 }

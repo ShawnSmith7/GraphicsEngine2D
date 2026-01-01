@@ -14,12 +14,11 @@ int main() {
 
     glm::vec4 coolColor(1.0f, 0.5f, 0.2f, 1.0f);
 
-    Rect rect(glm::vec2(25.0f), glm::vec2(50.0f), coolColor);
-    rect.setPos(glm::vec2(35.0f));
+    Circle circle(glm::vec2(200.0f), 100.0f, coolColor);
 
-    std::cout << rect << '\n';
+    std::cout << circle << '\n';
 
-    std::vector<Drawable*> drawables{ &rect };
+    std::vector<Drawable*> drawables{ &circle };
 
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     
@@ -40,7 +39,7 @@ int main() {
             drawable->draw(shaderProgram);
     });
 
-    std::cout << rect << '\n';
+    std::cout << circle << '\n';
     
     glfwTerminate();
     return 0;
