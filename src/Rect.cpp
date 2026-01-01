@@ -68,9 +68,9 @@ void Rect::draw(const ShaderProgram& shaderProgram) {
 
 std::ostream& operator<<(std::ostream& os, const Rect& rect) {
     return os
-        << "{ pos = " << glm::to_string(rect.getPos())
-        << ", size = " << glm::to_string(rect.getSize())
-        << ", color = " << glm::to_string(rect.getColor())
-        << ", rotation = " << rect.getRotation()
-        << ", origin = " << glm::to_string(rect.getOrigin()) << " }";
+        << "{ pos = " << glm::to_string(rect.getPos()) << ",\n"
+        << "size = " << glm::to_string(rect.getSize()) << ",\n"
+        << "color = " << glm::to_string(rect.getColor()) << ",\n"
+        << "rotation = " << rect.getRotation() << ",\n"
+        << "origin = " << glm::to_string(rect.getOrigin()) << " }";
 }

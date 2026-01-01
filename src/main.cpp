@@ -14,27 +14,12 @@ int main() {
 
     glm::vec4 coolColor(1.0f, 0.5f, 0.2f, 1.0f);
 
-    Rect rect(glm::vec2(320.0f, 266.7f), glm::vec2(200.0f), coolColor);
-    Circle circle(glm::vec2(640.0f, 266.7f), 100.0f, coolColor);
-    Line line(glm::vec2(880.0f, 166.7f), glm::vec2(1080.0f, 366.7f), 20.0f, coolColor);
-    ThickLine thickLine(glm::vec2(220.0f, 433.3f), glm::vec2(420.0f, 633.3f), 20.0f, coolColor);
-    thickLine.setPos1({0.0f, 0.0f});
-    RoundThickLine roundThickLine(glm::vec2(540.0f, 433.3f), glm::vec2(740.0f, 633.3f), 20.0f, coolColor, 16, 16);
-    SemiCircle semiCircle(glm::vec2(980.0f, 533.3f), 100.0f, coolColor, std::numbers::pi, 32);
-    Polyline polyline({{100.0f, 100.0f}, {200.0f, 50.0f}, {300.0f, 100.0f}}, 20, coolColor);
-    ThickPolyline thickPolyline({{500.0f, 50.0f}, {600.0f, 100.0f}, {700.0f, 50.0f}}, 20, coolColor);
+    Rect rect(glm::vec2(25.0f), glm::vec2(50.0f), coolColor);
+    rect.setPos(glm::vec2(35.0f));
 
-    std::cout << polyline;
+    std::cout << rect << '\n';
 
-    std::vector<Drawable*> drawables = {
-        &rect,
-        &circle, 
-        &line,
-        &thickLine,
-        &roundThickLine,
-        &semiCircle,
-        &polyline,
-        &thickPolyline };
+    std::vector<Drawable*> drawables{ &rect };
 
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     
@@ -54,6 +39,8 @@ int main() {
         for (Drawable* drawable : drawables)
             drawable->draw(shaderProgram);
     });
+
+    std::cout << rect << '\n';
     
     glfwTerminate();
     return 0;

@@ -4,7 +4,7 @@
 #include "ShaderProgram.h"
 
 ThickPolyline::ThickPolyline(const std::vector<glm::vec2>& points, float width, const glm::vec4& color) :
-    Polyline(points, width, color), segment(points[0], points[1], 20, color) {
+    Polyline(points, width, color)/*, segment(points[0], points[1], 20, color)*/ {
     segment.setWidth(width);
     segment.setColor(color);
 }
