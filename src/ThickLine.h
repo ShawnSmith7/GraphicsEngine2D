@@ -15,6 +15,8 @@ class ThickLine : public Line {
             float width = 1.0f,
             const glm::vec4& color = glm::vec4(1.0f));
 
+        ThickLine(const glm::vec2& pos1, float length, float width, float rotation, const glm::vec4& color);
+
         void draw(const ShaderProgram& shaderProgram) override;
     private:
         Rect rect;
