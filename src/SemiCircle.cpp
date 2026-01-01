@@ -27,11 +27,11 @@ void SemiCircle::draw(const ShaderProgram& shaderProgram) {
 
 std::ostream& operator<<(std::ostream& os, const SemiCircle& semiCircle) {
     return os
-        << "{ pos = " << glm::to_string(semiCircle.getPos())
-        << ", radius = " << semiCircle.getRadius()
-        << ", color = " << glm::to_string(semiCircle.getColor())
-        << ", arc = " << semiCircle.getArc()
-        << ", resolution = " << semiCircle.getResolution()
-        << ", rotation = " << semiCircle.getRotation()
-        << ", origin = " << glm::to_string(semiCircle.getOrigin()) << " }";
+        << "{ pos = " << glm::to_string(semiCircle.getPos()) << ",\n"
+        << "radius = " << semiCircle.getRadius() << ",\n"
+        << "color = " << glm::to_string(semiCircle.getColor()) << ",\n"
+        << "arc = " << semiCircle.getArc() << ",\n"
+        << "resolution = " << semiCircle.getResolution() << ",\n"
+        << "rotation = " << semiCircle.getRotation() << ",\n"
+        << "origin = " << glm::to_string(semiCircle.getOrigin()) << " }";
 }

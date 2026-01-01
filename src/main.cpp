@@ -14,11 +14,11 @@ int main() {
 
     glm::vec4 coolColor(1.0f, 0.5f, 0.2f, 1.0f);
 
-    Circle circle(glm::vec2(200.0f), 100.0f, coolColor);
+    SemiCircle semiCircle(glm::vec2(200.0f), 100.0f, coolColor, 2.0f * std::numbers::pi / 3.0f);
 
-    std::cout << circle << '\n';
+    std::cout << semiCircle << '\n';
 
-    std::vector<Drawable*> drawables{ &circle };
+    std::vector<Drawable*> drawables{ &semiCircle };
 
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     
@@ -39,7 +39,7 @@ int main() {
             drawable->draw(shaderProgram);
     });
 
-    std::cout << circle << '\n';
+    std::cout << semiCircle << '\n';
     
     glfwTerminate();
     return 0;
