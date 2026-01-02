@@ -21,5 +21,6 @@ void Buffer::unbind(GLenum target) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Buffer& buffer) {
-    return os << "{ ID = " << buffer.ID << " }";
+    return os
+        << "{ ID = " << buffer.ID << " }";
 }

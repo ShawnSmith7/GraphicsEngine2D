@@ -14,5 +14,7 @@ size_t IndexBuffer::getCount() const {
 }
 
 std::ostream& operator<<(std::ostream& os, const IndexBuffer& indexBuffer) {
-    return os << "{ Buffer = " << static_cast<const Buffer&>(indexBuffer) << ", count = " << indexBuffer.getCount() << " }";
+    return os
+        << "{ Buffer = " << static_cast<const Buffer&>(indexBuffer) << ",\n"
+        << "count = " << indexBuffer.getCount() << " }";
 }

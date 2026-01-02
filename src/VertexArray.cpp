@@ -29,5 +29,6 @@ void VertexArray::setAttributePointer(unsigned int index, int size, GLenum type,
 }
 
 std::ostream& operator<<(std::ostream& os, const VertexArray& vertexArray) {
-    return os << "{ ID = " << vertexArray.ID << " }";
+    return os
+        << "{ ID = " << vertexArray.ID << " }";
 }

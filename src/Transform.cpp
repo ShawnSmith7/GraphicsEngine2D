@@ -61,10 +61,10 @@ void Transform::updateMatrix() {
 
 std::ostream& operator<<(std::ostream& os, const Transform& transform) {
     return os 
-        << "{ translation = " << glm::to_string(transform.getTranslation()) 
-        << ", scaling = " << glm::to_string(transform.getScaling())
-        << ", rotation = " << transform.getRotation()
-        << ", origin = " << glm::to_string(transform.getOrigin())
-        << ", matrix = " << glm::to_string(transform.matrix)
-        << ", dirty = " << transform.dirty << " }";
+        << "{ translation = " << glm::to_string(transform.getTranslation())  << ",\n"
+        << "scaling = " << glm::to_string(transform.getScaling()) << ",\n"
+        << "rotation = " << transform.getRotation() << ",\n"
+        << "origin = " << glm::to_string(transform.getOrigin()) << ",\n"
+        << "matrix = " << glm::to_string(transform.matrix) << ",\n"
+        << "dirty = " << transform.dirty << " }";
 }

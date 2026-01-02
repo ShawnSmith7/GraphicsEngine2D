@@ -12,5 +12,6 @@ void Drawable::setTransform(const Transform& transform) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Drawable& drawable) {
-    return os << "{ transform = " << drawable.getTransform() << " }";
+    return os
+        << "{ transform = " << drawable.getTransform() << " }";
 }

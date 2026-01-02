@@ -14,11 +14,11 @@ int main() {
 
     glm::vec4 coolColor(1.0f, 0.5f, 0.2f, 1.0f);
 
-    ThickLine thickLine(glm::vec2(100.0f), glm::vec2(300.0f, 200.0f), 10.0f, coolColor);
+    RoundThickLine roundThickLine(glm::vec2(100.0f), glm::vec2(300.0f, 200.0f), 10.0f, coolColor);
 
-    std::cout << thickLine << '\n';
+    std::cout << roundThickLine << '\n';
 
-    std::vector<Drawable*> drawables{ &thickLine };
+    std::vector<Drawable*> drawables{ &roundThickLine };
 
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     
@@ -39,7 +39,7 @@ int main() {
             drawable->draw(shaderProgram);
     });
 
-    std::cout << thickLine << '\n';
+    std::cout << roundThickLine << '\n';
     
     glfwTerminate();
     return 0;

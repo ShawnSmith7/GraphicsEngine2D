@@ -60,5 +60,8 @@ GLFWframebuffersizefun Window::framebufferSizeCallback = [](GLFWwindow* window, 
 };
 
 std::ostream& operator<<(std::ostream& os, const Window& window) {
-    return os << "{ width = " << window.getWidth() << ", height = " << window.getHeight() << ", title = " << window.getTitle() << " }";
+    return os
+        << "{ width = " << window.getWidth() << ",\n"
+        << "height = " << window.getHeight() << ",\n"
+        << "title = " << window.getTitle() << " }";
 }
