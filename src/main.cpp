@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "Window.h"
-#include "RoundThickLine.h"
-#include "ThickPolyline.h"
+#include "Polyline.h"
 #include "ShaderProgram.h"
 
 void processInput(GLFWwindow* window);
@@ -14,11 +13,9 @@ int main() {
 
     glm::vec4 coolColor(1.0f, 0.5f, 0.2f, 1.0f);
 
-    RoundThickLine roundThickLine(glm::vec2(100.0f), glm::vec2(300.0f, 200.0f), 10.0f, coolColor);
+    Polyline polyline({glm::vec2(100.0f), glm::vec2(200.0f), {300.0f, 400.0f}, {600.0f, 200.0f}}, 1.0f, coolColor);
 
-    std::cout << roundThickLine << '\n';
-
-    std::vector<Drawable*> drawables{ &roundThickLine };
+    std::vector<Drawable*> drawables{ &polyline };
 
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     
@@ -38,8 +35,6 @@ int main() {
         for (Drawable* drawable : drawables)
             drawable->draw(shaderProgram);
     });
-
-    std::cout << roundThickLine << '\n';
     
     glfwTerminate();
     return 0;
