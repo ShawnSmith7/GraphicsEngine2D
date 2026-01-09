@@ -36,6 +36,7 @@ add_library(GraphicsEngine2DLib
     src/Line.cpp
     src/ThickLine.cpp
     src/Polyline.cpp
+    src/ThickPolyline.cpp
 )
 target_link_libraries(GraphicsEngine2DLib PUBLIC opengl32 glad glfw glm)
 

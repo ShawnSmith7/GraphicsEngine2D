@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Window.h"
-#include "Polyline.h"
+#include "ThickLine.h"
+#include "Circle.h"
 #include "ShaderProgram.h"
 
 void processInput(GLFWwindow* window);
@@ -13,9 +14,11 @@ int main() {
 
     glm::vec4 coolColor(1.0f, 0.5f, 0.2f, 1.0f);
 
-    Polyline polyline({glm::vec2(100.0f), glm::vec2(200.0f), {300.0f, 400.0f}, {600.0f, 200.0f}}, 1.0f, coolColor);
+    ThickLine thickLine(glm::vec2(100.0f), {500.0f, 250.0f}, 20.0f, coolColor);
+    Circle p1(glm::vec2(100.0f), 5.0f, glm::vec4(1.0f), 16);
+    Circle p2({500.0f, 250.0f}, 5.0f, glm::vec4(1.0f), 16);
 
-    std::vector<Drawable*> drawables{ &polyline };
+    std::vector<Drawable*> drawables{ &thickLine, &p1, &p2 };
 
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     
